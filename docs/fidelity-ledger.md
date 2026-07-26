@@ -99,3 +99,158 @@ modo de demonstração. Em live, esse prefixo não aparece.
 Resultado: a implementação foi comparada diretamente às três referências e
 atinge fidelidade de agência nos pontos de composição, tipografia, paleta,
 responsividade, conversão e movimento. Não restam divergências materiais.
+
+## Remoção da navegação — julho de 2026
+
+- Referência: captura enviada pelo usuário, com a NAV abaixo do alerta.
+- Render verificado no navegador integrado em 1280 × 720 e 390 × 844.
+- Comparação feita com `view_image` entre a referência e o render desktop.
+- Pontos inspecionados: remoção do logo, remoção dos quatro links, remoção do
+  segundo CTA, permanência do alerta e reposicionamento do hero.
+- Copy acima da dobra: somente os textos pertencentes à NAV foram removidos.
+- Interação: o CTA do alerta continua navegando para `#oferta`.
+- Resultado: nenhuma referência à NAV permaneceu, não houve overflow horizontal
+  e o console permaneceu sem erros ou avisos.
+
+## Sequência de problemas — julho de 2026
+
+- Referência: captura do usuário em 1119 × 709, com frases sobrepostas e a
+  expressão “não é uma” quebrada em linhas separadas.
+- Causa confirmada: a seção tinha 165vh, deixando apenas cerca de 65vh para o
+  sticky, e o progresso começava antes de a seção alcançar o topo da viewport.
+- Correção: seção ampliada para 360svh, progresso entre `start start` e
+  `end end`, suavização por spring e entrada/saída vertical de 28px.
+- Tipografia: a quebra manual foi removida e “não é uma” passou a ser uma
+  unidade sem quebra; o parágrafo usa distribuição de linhas `pretty`.
+- Comparação no navegador integrado em 1119 × 709: sticky a 88px abaixo da
+  campanha, uma única frase com opacidade 1, nenhuma sobreposição material.
+- Mobile em 390 × 844: sticky desativado, três frases em fluxo normal,
+  transformações removidas e nenhum overflow horizontal.
+- Copy: nenhum texto foi adicionado, removido ou renomeado.
+- Acessibilidade: `prefers-reduced-motion` mantém a versão sequencial estática.
+- Evidência limitada: a sensação de fluidez é temporal e não pode ser provada
+  por uma captura isolada; foi verificada nos três estágios do scroll.
+
+## Integração das imagens da marca — julho de 2026
+
+### Seleção e tratamento
+
+- Fonte: `C:\Users\Gustavo\Documents\Projetos_gu\Base-do-seller\imgs`, com dez
+  artes quadradas de 1254 × 1254 px fornecidas pelo usuário.
+- Sete imagens foram selecionadas: encontrar fornecedores, validar pedido,
+  analisar produtos, testar pequeno, planilha, treinamento e chamada final.
+- As artes 1, 2 e 9 não foram usadas porque repetiam, respectivamente, a
+  promessa do hero, a narrativa do problema e uma explicação genérica do método.
+- Os originais foram preservados. As sete cópias de produção foram convertidas
+  para WebP de 1000 × 1000 px, reduzindo cerca de 11 MB para menos de 500 KB.
+- A arte da planilha recebeu aviso visível de que nomes e contatos são
+  fictícios; nenhuma ilustração foi tratada como depoimento ou prova operacional.
+
+### Mapeamento
+
+| Seção | Arte usada | Papel na narrativa |
+| --- | --- | --- |
+| Vídeo/treinamento | `training-process.webp` | Explica o processo sem criar um player falso |
+| Base/planilha | `spreadsheet-illustration.webp` | Materializa o entregável |
+| Método 01 | `method-find-suppliers.webp` | Encontrar fornecedores |
+| Método 02 | `method-validate-order.webp` | Validar antes do pedido |
+| Método 03 | `method-analyze-products.webp` | Analisar custo, frete e concorrência |
+| Método 04 | `method-test-small.webp` | Testar pequeno antes de escalar |
+| CTA final | `final-cta-start-with-base.webp` | Reforça a decisão de começar pela base |
+
+### Comparação visual
+
+| Ponto | Fonte | Implementação | Resultado |
+| --- | --- | --- | --- |
+| Paleta | Amarelo forte e azul-marinho | Inserida em superfícies escuras com bordas discretas | Fiel à marca |
+| Texto nas artes | Composição quadrada e leitura central | Conteúdo preservado e legível nos slots | Fiel |
+| Enquadramento | 1254 × 1254 sem corte | Método e mobile em 1:1; CTA com corte vertical leve e seguro | Fiel |
+| Papel da seção | Artes editoriais de processo | Uma arte por etapa ou decisão relevante | Sem efeito de galeria |
+| Responsividade | Fonte quadrada | 538 × 538 no desktop e 333 × 333 no mobile | Sem distorção |
+| Movimento | Arquivos estáticos | Crossfade e escala sutis entre as quatro etapas | Fluido e contido |
+
+### Verificação
+
+- O arquivo original da etapa “Analisar” e o render desktop correspondente foram
+  abertos lado a lado com `view_image`.
+- Navegador integrado validado em 1146 × 864 e 390 × 844.
+- Os quatro estados do método carregaram corretamente; “Analisar” e “Testar”
+  foram verificados com opacidade final 1 e sem sobreposição residual.
+- A versão mobile usa as quatro artes em fluxo normal, sem sticky ou overflow.
+- A planilha, o treinamento e a CTA final carregaram com imagens otimizadas.
+- Console sem erros ou avisos; nenhum overflow horizontal encontrado.
+- A copy acima da dobra não foi alterada e nenhuma nova alegação foi adicionada.
+
+### Desvios intencionais
+
+- Nem todas as artes foram usadas: as três redundantes foram excluídas para
+  preservar ritmo, hierarquia e foco de conversão.
+- O hero permaneceu com o visual abstrato original para não competir com o H1.
+- A seção de autoridade não recebeu ilustração, pois arte editorial não substitui
+  evidência real.
+- A comparação foi feita com os arquivos-fonte em 1254 × 1254 e com a página nos
+  viewports reais de desktop e mobile; não há um conceito de página inteira em
+  tamanho nativo para uma comparação de viewport idêntico.
+
+Resultado: as imagens foram integradas como elementos funcionais da narrativa,
+com enquadramento, legibilidade, desempenho e comportamento responsivo validados.
+
+## Sistema visual derivado das artes — julho de 2026
+
+- Fonte visual: as dez artes de
+  `C:\Users\Gustavo\Documents\Projetos_gu\Base-do-seller\imgs`.
+- Direção extraída: fundo quase preto, superfícies azul-marinho, amarelo de alta
+  energia, títulos grotescos pesados, raios menores e contraste editorial.
+- Tokens atualizados para `#050A12`, `#0A1728`, `#F6B900`, `#FFCC21` e
+  `#F8F6EF`.
+- Botões primários, campanha, números, ícones, linhas e palavras-chave passaram
+  a usar o amarelo da identidade.
+- Uma faixa cinética com “Encontrar, Validar, Analisar, Testar pequeno” conecta
+  o hero ao restante da página.
+- Títulos das seções foram reescritos para aumentar clareza, ritmo e retenção,
+  sem criar promessa de lucro ou resultado garantido.
+- O H1, a descrição, os CTAs e os três fatos acima da dobra foram preservados.
+- Desktop verificado em 1146 × 864; mobile em 390 × 844.
+- Títulos mobile auditados para espaços, truncamento, overflow e palavras
+  isoladas; grupos críticos receberam `white-space: nowrap`.
+- CTA do hero testado até `#oferta`; accordion verificado aberto e fechado.
+- Comparação visual conjunta:
+  `docs/redesign-qa/08-identity-comparison.png`.
+- Relatório completo: `design-qa.md`, com `final result: passed`.
+
+Resultado: tipografia, paleta, superfícies, imagens, espaçamento, responsividade
+e movimento passaram a formar um único sistema coerente com as artes, mantendo
+o tom escuro original.
+
+## Robô 3D interativo no hero — julho de 2026
+
+- Fonte funcional: componente Spline e cena indicados no prompt anexado pelo
+  usuário.
+- Referência de composição: hero anterior em 1440 × 900, com a área abstrata à
+  direita e a copy preservada à esquerda.
+- Implementação: a linha e os planos abstratos foram substituídos pelo robô 3D,
+  enquadrado dentro do mesmo espaço visual e integrado ao fundo azul-marinho com
+  halo e contorno amarelo.
+- Copy acima da dobra: nenhum texto, CTA, número ou ordem foi alterado.
+- Ponteiro: o movimento foi testado em dois pontos da área do robô; a cabeça
+  mudou de orientação e acompanhou o cursor sem deslocar o layout.
+- Desktop: verificado no navegador integrado em 1440 × 900.
+- Mobile: verificado em 390 × 844; o robô entra no fluxo abaixo dos elementos de
+  confiança, sem overflow horizontal, e o scroll permanece disponível.
+- Evidências finais: `docs/redesign-qa/09-interactive-robot-desktop.png` e
+  `docs/redesign-qa/10-interactive-robot-mobile.png`.
+- Carregamento: a cena usa `React.lazy` e `Suspense`, com estado visual coerente
+  com a marca enquanto o WebGL é inicializado.
+- Branding da cena: o overlay “Built with Spline” foi desativado após o
+  carregamento, sem recorte do canvas nem alteração da posição do robô.
+- Acessibilidade: o visual possui descrição semântica; a animação de loading
+  respeita `prefers-reduced-motion` por meio das regras globais já existentes.
+- Verificação visual: a referência anterior e o render final foram inspecionados
+  diretamente com `view_image`; hierarquia, paleta, espaçamento, enquadramento e
+  contraste permaneceram consistentes.
+- Validação técnica: lint, TypeScript, build de produção e auditoria das
+  dependências de produção concluíram sem erros ou vulnerabilidades conhecidas.
+
+Resultado: o robô substitui o antigo visual abstrato sem alterar a oferta,
+preserva o hero escuro e adiciona a interação de acompanhamento do ponteiro
+solicitada.

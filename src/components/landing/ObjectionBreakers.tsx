@@ -14,8 +14,13 @@ export function ObjectionBreakers() {
           <Reveal>
             <p className="objection-breakers__label">Antes de decidir</p>
             <h2>
-              Você pode continuar começando do zero — ou começar com{" "}
-              <strong>uma base e um processo.</strong>
+              Você pode continuar do zero.
+              <br />
+              {" "}
+              <strong>
+                Ou começar com{" "}
+                <span className="title-keep">base e processo.</span>
+              </strong>
             </h2>
           </Reveal>
 

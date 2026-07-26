@@ -29,9 +29,12 @@ export function AudienceSection() {
       <div className="container">
         <Reveal>
           <h2>
-            Para quem quer começar
+            Critério antes do estoque.
             <br />
-            {" "}com mais critério.
+            {" "}
+            <strong className="heading-accent">
+              Método antes da aposta.
+            </strong>
           </h2>
         </Reveal>
 

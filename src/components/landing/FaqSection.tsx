@@ -8,9 +8,10 @@ export function FaqSection() {
       <div className="container faq__layout">
         <Reveal className="faq__heading">
           <h2>
-            Dúvidas,
+            Antes de entrar,
             <br />
-            {" "}com respostas diretas.
+            {" "}
+            <strong className="heading-accent">deixe tudo claro.</strong>
           </h2>
           <p>
             O que precisa estar claro antes de você decidir se essa base faz

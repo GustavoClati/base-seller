@@ -1,11 +1,19 @@
 "use client";
 
 import { motion, useInView, useReducedMotion } from "motion/react";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 import { methodSteps } from "@/content/site-content";
 import { getCheckoutHref } from "@/lib/site-config";
 import { TrackedCta } from "@/components/ui/TrackedCta";
+
+const methodVisuals = [
+  "/images/method-find-suppliers.webp",
+  "/images/method-validate-order.webp",
+  "/images/method-analyze-products.webp",
+  "/images/method-test-small.webp",
+] as const;
 
 type MethodStepProps = {
   index: number;
@@ -38,15 +46,13 @@ function MethodStep({ index, onActive }: MethodStepProps) {
 
 function MethodMiniVisual({ state }: { state: number }) {
   return (
-    <div
-      aria-hidden="true"
-      className={`method-mini method-mini--${state}`}
-    >
-      <i />
-      <i />
-      <i />
-      <i />
-      <i />
+    <div aria-hidden="true" className="method-mini">
+      <Image
+        alt=""
+        fill
+        sizes="(max-width: 1023px) calc(100vw - 3rem), 1px"
+        src={methodVisuals[state]}
+      />
     </div>
   );
 }
@@ -55,40 +61,30 @@ function MethodVisual({ active }: { active: number }) {
   const reduceMotion = useReducedMotion();
 
   return (
-    <div aria-hidden="true" className={`method-visual is-state-${active}`}>
-      <div className="method-visual__field">
-        {Array.from({ length: 14 }).map((_, index) => (
-          <motion.i
-            animate={
-              reduceMotion
-                ? undefined
-                : {
-                    opacity:
-                      active === 0
-                        ? [0.25, 0.72, 0.25]
-                        : active === 3 && index === 10
-                          ? [0.4, 1, 0.4]
-                          : 0.62,
-                    scale:
-                      active === 3 && index === 10 ? [1, 1.8, 1] : 1,
-                  }
-            }
-            key={index}
-            transition={{
-              duration: 2.4,
-              delay: index * 0.07,
-              repeat: Infinity,
-            }}
+    <div aria-hidden="true" className="method-visual">
+      {methodVisuals.map((src, index) => (
+        <motion.div
+          animate={{
+            opacity: index === active ? 1 : 0,
+            scale: index === active ? 1 : 1.035,
+          }}
+          className="method-visual__image"
+          initial={false}
+          key={src}
+          transition={{
+            duration: reduceMotion ? 0 : 0.65,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
+          <Image
+            alt=""
+            fill
+            priority={index === 0}
+            sizes="(max-width: 1023px) 1px, min(48vw, 38rem)"
+            src={src}
           />
-        ))}
-        <span className="method-visual__filter" />
-        <span className="method-visual__route" />
-        <span className="method-visual__columns">
-          <i />
-          <i />
-          <i />
-        </span>
-      </div>
+        </motion.div>
+      ))}
       <p>
         <span>{methodSteps[active].number}</span>
         {methodSteps[active].title}
@@ -104,7 +100,12 @@ export function MethodScrollytelling() {
     <section className="section method" id="metodo">
       <div className="container">
         <div className="method__heading">
-          <h2>Da pesquisa ao primeiro teste.</h2>
+          <h2>
+            Encontre. Valide. Analise.
+            <br />
+            {" "}
+            <strong className="heading-accent">Só então teste.</strong>
+          </h2>
           <p>
             Um processo simples para evitar que a decisão comece e termine no
             preço do fornecedor.

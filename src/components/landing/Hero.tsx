@@ -9,10 +9,13 @@ import {
 import { FileSpreadsheet, ShieldCheck, UsersRound } from "lucide-react";
 import { useRef } from "react";
 
-import { AbstractBaseVisual } from "@/components/landing/AbstractBaseVisual";
 import { MediaSlot } from "@/components/ui/MediaSlot";
 import { TrackedCta } from "@/components/ui/TrackedCta";
+import { InteractiveRobotSpline } from "@/components/ui/interactive-3d-robot";
 import { getCheckoutHref, siteConfig } from "@/lib/site-config";
+
+const ROBOT_SCENE_URL =
+  "https://prod.spline.design/PyzDhpQ9E5f1E3MT/scene.splinecode";
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -171,7 +174,18 @@ export function Hero() {
               videoMode="background"
             />
           ) : (
-            <AbstractBaseVisual />
+            <div
+              aria-label="Robô 3D interativo que acompanha o movimento do ponteiro"
+              className="seller-bot"
+              role="img"
+            >
+              <div aria-hidden="true" className="seller-bot__stage">
+                <InteractiveRobotSpline
+                  className="seller-bot__canvas"
+                  scene={ROBOT_SCENE_URL}
+                />
+              </div>
+            </div>
           )}
         </motion.div>
       </div>

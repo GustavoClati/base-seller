@@ -1,6 +1,12 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "motion/react";
 import { useRef } from "react";
 
 import { problemStatements } from "@/content/site-content";
@@ -10,34 +16,58 @@ export function ProblemSequence() {
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 0.82", "end 0.18"],
+    offset: ["start start", "end end"],
+  });
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 92,
+    damping: 26,
+    mass: 0.34,
+    restDelta: 0.001,
   });
 
   const firstOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.1, 0.29, 0.38],
+    smoothProgress,
+    [0, 0.08, 0.27, 0.34],
     [0, 1, 1, 0],
+  );
+  const firstY = useTransform(
+    smoothProgress,
+    [0, 0.08, 0.27, 0.34],
+    [28, 0, 0, -28],
   );
   const secondOpacity = useTransform(
-    scrollYProgress,
-    [0.29, 0.4, 0.58, 0.67],
+    smoothProgress,
+    [0.32, 0.39, 0.61, 0.68],
     [0, 1, 1, 0],
   );
-  const thirdOpacity = useTransform(
-    scrollYProgress,
-    [0.58, 0.7, 0.9, 1],
-    [0, 1, 1, 0.72],
+  const secondY = useTransform(
+    smoothProgress,
+    [0.32, 0.39, 0.61, 0.68],
+    [28, 0, 0, -28],
   );
-  const lineScale = useTransform(scrollYProgress, [0, 1], [0.05, 1]);
+  const thirdOpacity = useTransform(
+    smoothProgress,
+    [0.66, 0.73, 1],
+    [0, 1, 1],
+  );
+  const thirdY = useTransform(
+    smoothProgress,
+    [0.66, 0.73, 1],
+    [28, 0, 0],
+  );
+  const lineScale = useTransform(smoothProgress, [0, 1], [0.04, 1]);
 
   return (
     <section className="problem-sequence" ref={ref}>
       <div className="container problem-sequence__sticky">
         <div className="problem-sequence__intro">
           <h2>
-            Um contato não é
+            Contato encontrado
             <br />
-            {" "}uma oportunidade.
+            {" "}
+            <strong className="heading-accent">
+              ainda não <span className="title-keep">é oportunidade.</span>
+            </strong>
           </h2>
           <p>
             Um preço pode parecer baixo até o frete entrar na conta. Uma margem
@@ -55,19 +85,28 @@ export function ProblemSequence() {
           />
           <motion.p
             className="problem-sequence__statement problem-sequence__statement--one"
-            style={{ opacity: reduceMotion ? 1 : firstOpacity }}
+            style={{
+              opacity: reduceMotion ? 1 : firstOpacity,
+              y: reduceMotion ? 0 : firstY,
+            }}
           >
             {problemStatements[0]}
           </motion.p>
           <motion.p
             className="problem-sequence__statement problem-sequence__statement--two"
-            style={{ opacity: reduceMotion ? 1 : secondOpacity }}
+            style={{
+              opacity: reduceMotion ? 1 : secondOpacity,
+              y: reduceMotion ? 0 : secondY,
+            }}
           >
             {problemStatements[1]}
           </motion.p>
           <motion.p
             className="problem-sequence__statement problem-sequence__statement--three"
-            style={{ opacity: reduceMotion ? 1 : thirdOpacity }}
+            style={{
+              opacity: reduceMotion ? 1 : thirdOpacity,
+              y: reduceMotion ? 0 : thirdY,
+            }}
           >
             {problemStatements[2]}
           </motion.p>

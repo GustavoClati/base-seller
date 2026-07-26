@@ -10,9 +10,12 @@ export function CoreDifference() {
       <div className="container">
         <div className="core-difference__layout">
           <h2>
-            A planilha encurta a busca.
+            A base acelera o começo.
             <br />
-            {" "}As aulas ensinam o processo.
+            {" "}
+            <strong className="heading-accent">
+              O método melhora a decisão.
+            </strong>
           </h2>
           <p>
             Você aprende a encontrar novos fornecedores, confirmar condições,

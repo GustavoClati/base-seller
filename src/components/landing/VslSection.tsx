@@ -4,7 +4,10 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { siteConfig } from "@/lib/site-config";
 
 export function VslSection() {
-  if (siteConfig.siteMode === "live" && !siteConfig.media.vslVideo) {
+  const hasVideo = Boolean(siteConfig.media.vslVideo);
+  const hasPoster = Boolean(siteConfig.media.vslPoster);
+
+  if (siteConfig.siteMode === "live" && !hasVideo && !hasPoster) {
     return null;
   }
 
@@ -13,20 +16,40 @@ export function VslSection() {
       <div className="container">
         <Reveal>
           <SectionHeading
-            description="Em poucos minutos, entenda o problema que ela resolve, o que você recebe e como usar o processo antes de comprar estoque."
-            title="Veja como a Base do Seller funciona."
+            description="Veja como a base, as aulas e o processo se conectam para você pesquisar com mais clareza antes do primeiro pedido."
+            title={
+              <>
+                Entenda antes de
+                <br />
+                {" "}
+                <strong className="heading-accent">
+                  colocar dinheiro <span className="title-keep">em estoque.</span>
+                </strong>
+              </>
+            }
           />
         </Reveal>
         <Reveal delay={0.1}>
           <MediaSlot
-            alt="Vídeo explicando como a Base do Seller funciona"
-            assetSrc={siteConfig.media.vslVideo}
-            assetType="video"
-            className="vsl-section__frame"
-            description="Vídeo de vendas com controles reais e poster configurável."
+            alt={
+              hasVideo
+                ? "Vídeo explicando como a Base do Seller funciona"
+                : "Ilustração das aulas e do processo da Base do Seller"
+            }
+            aspectRatio={hasVideo ? "16 / 9" : "4 / 3"}
+            assetSrc={
+              hasVideo
+                ? siteConfig.media.vslVideo
+                : siteConfig.media.vslPoster
+            }
+            assetType={hasVideo ? "video" : "image"}
+            className={`vsl-section__frame${
+              hasVideo ? "" : " vsl-section__frame--poster"
+            }`}
+            description="Adicione o vídeo principal quando ele estiver pronto."
             id="vsl-principal"
-            label="Adicionar vídeo principal"
-            poster={siteConfig.media.vslPoster}
+            label="Adicionar vídeo principal ou imagem de apresentação"
+            poster={hasVideo ? siteConfig.media.vslPoster : null}
             siteMode={siteConfig.siteMode}
           />
         </Reveal>

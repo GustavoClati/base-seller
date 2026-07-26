@@ -9,9 +9,12 @@ export function BaseReveal() {
         <div className="base-reveal__layout">
           <Reveal className="base-reveal__copy">
             <h2>
-              O caminho fica mais curto
+              Comece com uma base.
               <br />
-              {" "}quando você sabe onde olhar.
+              {" "}
+              <strong className="heading-accent">
+                Avance com <span className="title-keep">mais critério.</span>
+              </strong>
             </h2>
             <p className="base-reveal__description">
               A Base do Seller reúne os fornecedores que fizeram parte da minha
@@ -33,15 +36,21 @@ export function BaseReveal() {
 
           <Reveal className="base-reveal__media" delay={0.08}>
             <MediaSlot
-              alt="Prévia real da planilha Base do Seller com dados sensíveis ocultos"
+              alt="Ilustração da planilha Base do Seller em um notebook e celular"
+              aspectRatio="1 / 1"
               assetSrc={siteConfig.media.spreadsheetPreview}
               assetType="image"
-              aspectRatio="4 / 5"
-              description="Use uma captura real com contatos e dados sensíveis ocultos."
+              description="Use uma captura real quando ela estiver pronta."
               id="screenshot-planilha"
-              label="Adicionar print real da planilha"
+              label="Adicionar imagem da planilha"
               siteMode={siteConfig.siteMode}
             />
+            {siteConfig.media.spreadsheetPreview ? (
+              <p className="base-reveal__media-note">
+                Imagem ilustrativa. Os nomes e contatos exibidos na arte são
+                fictícios.
+              </p>
+            ) : null}
           </Reveal>
         </div>
       </div>

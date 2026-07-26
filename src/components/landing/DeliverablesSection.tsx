@@ -11,9 +11,12 @@ export function DeliverablesSection() {
             description="Você recebe o necessário para agir, sem um curso de dezenas de horas ou bônus criados apenas para aumentar volume."
             title={
               <>
-                Uma base para começar.
+                Menos conteúdo para acumular.
                 <br />
-                {" "}Um processo para continuar.
+                {" "}
+                <strong className="heading-accent">
+                  Mais clareza para agir.
+                </strong>
               </>
             }
           />

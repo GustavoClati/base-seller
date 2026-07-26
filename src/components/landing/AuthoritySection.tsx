@@ -19,9 +19,12 @@ export function AuthoritySection() {
         <div className="authority__intro">
           <Reveal>
             <h2>
-              Construída na operação.
+              Não veio de uma pesquisa.
               <br />
-              {" "}Não em uma pesquisa de um dia.
+              {" "}
+              <strong className="heading-accent">
+                Veio da operação.
+              </strong>
             </h2>
           </Reveal>
           <Reveal delay={0.06}>

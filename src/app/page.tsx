@@ -10,11 +10,11 @@ import { MethodScrollytelling } from "@/components/landing/MethodScrollytelling"
 import { OfferSection } from "@/components/landing/OfferSection";
 import { ObjectionBreakers } from "@/components/landing/ObjectionBreakers";
 import { ProblemSequence } from "@/components/landing/ProblemSequence";
+import { ProcessRail } from "@/components/landing/ProcessRail";
 import { SpreadsheetPreview } from "@/components/landing/SpreadsheetPreview";
 import { TestimonialsSection } from "@/components/landing/TestimonialsSection";
 import { TransparencySection } from "@/components/landing/TransparencySection";
 import { VslSection } from "@/components/landing/VslSection";
-import { FloatingHeader } from "@/components/layout/FloatingHeader";
 import { CampaignBar } from "@/components/layout/CampaignBar";
 import { Footer } from "@/components/layout/Footer";
 import { MobileStickyCta } from "@/components/layout/MobileStickyCta";
@@ -39,9 +39,9 @@ export default function Home() {
         label={siteConfig.promotion.label}
         previewMode={siteConfig.siteMode === "preview"}
       />
-      <FloatingHeader hasCampaign={campaignEnabled} />
       <main id="conteudo-principal">
         <Hero />
+        <ProcessRail />
         <VslSection />
         <ProblemSequence />
         <BaseReveal />

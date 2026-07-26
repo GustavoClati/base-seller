@@ -39,7 +39,7 @@ export const siteContent = {
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "") ?? "",
 
   offer: {
-    price: process.env.NEXT_PUBLIC_OFFER_PRICE?.trim() ?? "",
+    price: process.env.NEXT_PUBLIC_OFFER_PRICE?.trim() || "R$ 59,89",
     installments: process.env.NEXT_PUBLIC_OFFER_INSTALLMENTS?.trim() ?? "",
     paymentNote:
       process.env.NEXT_PUBLIC_OFFER_PAYMENT_NOTE?.trim() ||
@@ -65,13 +65,13 @@ export const siteContent = {
     heroVideo: null,
     heroPoster: null,
     vslVideo: null,
-    vslPoster: null,
-    spreadsheetPreview: null,
+    vslPoster: "/images/training-process.webp",
+    spreadsheetPreview: "/images/spreadsheet-illustration.webp",
     authorPortrait: null,
     salesDashboard: null,
     ordersProof: null,
     supplierConversation: null,
-    finalCtaImage: null,
+    finalCtaImage: "/images/final-cta-start-with-base.webp",
     ogImage: null,
   } as MediaConfig,
 

@@ -18,8 +18,12 @@ export function FinalCta() {
           >
             <div className="final-cta__copy">
               <h2>
-                Você não precisa começar
-                <br />{" "}a pesquisa do zero.
+                Comece pela base.
+                <br />
+                {" "}
+                <strong className="heading-accent">
+                  Não comece do zero.
+                </strong>
               </h2>
               <p>
                 Use uma base construída na prática e aprenda a encontrar as
@@ -35,13 +39,13 @@ export function FinalCta() {
 
             {hasMedia ? (
               <MediaSlot
-                alt="Composição real dos materiais da Base do Seller"
+                alt="Ilustração de um carrinho com caixas da Base do Seller"
                 assetSrc={siteConfig.media.finalCtaImage}
                 assetType="image"
-                aspectRatio="4 / 3"
-                description="Use uma foto ou composição real dos materiais."
+                aspectRatio="1 / 1"
+                description="Adicione uma composição real quando ela estiver pronta."
                 id="imagem-cta-final"
-                label="Adicionar imagem real do CTA final"
+                label="Adicionar imagem do CTA final"
                 siteMode={siteConfig.siteMode}
               />
             ) : null}
