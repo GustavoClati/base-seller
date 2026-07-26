@@ -162,6 +162,8 @@ export const audience = {
     "Quer aprender a encontrar novos contatos",
     "Quer analisar antes de investir",
     "Está disposto a pesquisar, comparar e testar",
+    "Quer reduzir o tempo gasto procurando contatos",
+    "Prefere confirmar condições antes do primeiro pedido",
   ],
   notForYou: [
     "Procura lucro garantido",

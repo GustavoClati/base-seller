@@ -33,7 +33,10 @@ export function Accordion({ items }: AccordionProps) {
         const panelId = `${baseId}-panel-${index}`;
 
         return (
-          <div className="accordion__item" key={item.question}>
+          <div
+            className={`accordion__item${isOpen ? " is-open" : ""}`}
+            key={item.question}
+          >
             <h3>
               <button
                 aria-controls={panelId}
@@ -43,8 +46,12 @@ export function Accordion({ items }: AccordionProps) {
                 onClick={() => toggle(index)}
                 type="button"
               >
-                <span>{item.question}</span>
+                <span className="accordion__index">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="accordion__question">{item.question}</span>
                 <motion.span
+                  className="accordion__chevron"
                   animate={{ rotate: isOpen ? 180 : 0 }}
                   aria-hidden="true"
                   transition={{ duration: reduceMotion ? 0 : 0.25 }}

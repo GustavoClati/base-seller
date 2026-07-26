@@ -325,3 +325,52 @@ materiais restantes.
 
 Resultado: a faixa fica totalmente visível ao abrir a página e o robô permanece
 rente à faixa e ao canto direito, sem regressões materiais.
+
+## Polimento de conteúdo e diferenciação visual — julho de 2026
+
+- A faixa cinética ganhou uma sequência maior com repetições de “Testar pequeno”,
+  “Encontrar”, “Validar” e “Analisar”, mantendo o loop contínuo sem lacunas.
+- “A base abre o caminho. O método melhora a decisão.” foi fixado em duas linhas
+  no desktop e recebeu entrada animada, etapas nomeadas e um marcador que percorre
+  a trilha entre Base e Processo.
+- A seção dos 18 fornecedores passou a apresentar os seis campos como módulos
+  visuais com ícones, números e uma chamada de pesquisa destacada.
+- “Critério antes do estoque. Método antes da aposta.” foi fixado em duas linhas
+  no desktop; o box de perfil alinhado usa confirmação e amarelo, enquanto o box
+  de expectativa desalinhada usa alerta, vermelho e borda tracejada.
+- Verificação concluída em 1906 × 860 e 390 × 844, sem overflow horizontal.
+- Comparação com as três referências do usuário:
+  `docs/redesign-qa/23-before-after-board.jpg`.
+- Evidências individuais:
+  `docs/redesign-qa/18-core-difference-polish.png`,
+  `docs/redesign-qa/19-spreadsheet-icons.png`,
+  `docs/redesign-qa/20-audience-contrast.png`,
+  `docs/redesign-qa/21-mobile-polish.png` e
+  `docs/redesign-qa/22-process-rail.png`.
+- A copy principal acima da dobra permaneceu inalterada.
+
+Resultado: aprovado, sem incompatibilidades visuais P0, P1 ou P2.
+
+## FAQ, público e retenção visual — julho de 2026
+
+- O título do FAQ passou a ser “Antes de decidir, deixe tudo claro.” e ocupa
+  exatamente duas linhas no desktop.
+- O accordion recebeu numeração, estado aberto destacado, hover e chevrons
+  animados, preservando a acessibilidade do controle.
+- Os quadros “É para você” e “Não é para você” agora começam na mesma altura.
+- O perfil positivo ganhou dois critérios:
+  “Quer reduzir o tempo gasto procurando contatos” e
+  “Prefere confirmar condições antes do primeiro pedido”.
+- A seção de transparência ganhou um box editorial para a frase
+  “Você compra um caminho melhor para decidir”.
+- As linhas de objeção receberam microinteração discreta no hover.
+- Evidências:
+  `docs/redesign-qa/24-faq-two-lines.png`,
+  `docs/redesign-qa/25-audience-aligned.png`,
+  `docs/redesign-qa/26-transparency-highlight.png`,
+  `docs/redesign-qa/27-faq-mobile.png` e
+  `docs/redesign-qa/28-before-after-faq-audience.jpg`.
+- Desktop validado em 1906 × 860 e mobile em 390 × 844, sem overflow.
+- O H1, a oferta e a copy acima da dobra não foram alterados.
+
+Resultado: aprovado, sem incompatibilidades visuais P0, P1 ou P2.

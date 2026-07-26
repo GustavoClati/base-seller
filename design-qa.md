@@ -176,3 +176,79 @@ Nenhum P0, P1 ou P2 permanece.
 - Pós-fix: nenhum P0, P1 ou P2 permanece.
 
 final result: passed
+
+## FAQ, público e retenção visual — julho de 2026
+
+### Fonte visual e implementação
+
+- Fonte FAQ:
+  `C:\Users\Gustavo\AppData\Local\Temp\codex-clipboard-9877ef71-c4f6-4ac0-8cf7-9739d7954538.png`
+  — 1905 × 833 px.
+- Fonte público:
+  `C:\Users\Gustavo\AppData\Local\Temp\codex-clipboard-1ee83227-8704-48c0-b820-f6b982e6bfbe.png`
+  — 1908 × 856 px.
+- Implementação FAQ:
+  `docs/redesign-qa/24-faq-two-lines.png` — 1906 × 860 px.
+- Implementação público:
+  `docs/redesign-qa/25-audience-aligned.png` — 1906 × 860 px.
+- Destaque complementar:
+  `docs/redesign-qa/26-transparency-highlight.png` — 1906 × 860 px.
+- Mobile:
+  `docs/redesign-qa/27-faq-mobile.png` — 390 × 844 CSS px.
+- Comparação conjunta:
+  `docs/redesign-qa/28-before-after-faq-audience.jpg`.
+- Densidade: captura do navegador integrado em aproximadamente 1 px por CSS px.
+- Normalização: fontes e renders ajustados para células de 1906 × 860 px,
+  preservando proporção com `contain` nas referências.
+- Estado: campanha ativa; primeiro item do FAQ expandido; seção de público no
+  início; tema escuro.
+
+### Evidência de visão completa
+
+- O FAQ agora apresenta o título em exatamente duas linhas no desktop.
+- Os dois quadros de público começam na mesma coordenada vertical.
+- O quadro positivo recebeu dois novos critérios e uma chamada editorial final.
+- A faixa de transparência ganhou uma superfície destacada que reforça a
+  proposta sem criar promessa de lucro.
+
+### Evidência focada
+
+- A comparação `28-before-after-faq-audience.jpg` permite ler os títulos,
+  alinhamentos, ícones e estados de ambas as seções sem exigir recorte adicional.
+- O FAQ foi testado abrindo a pergunta 02; o estado expandido, a rotação do
+  chevron e a troca de resposta funcionaram.
+- O mobile foi inspecionado em 390 × 844; as duas linhas do título medem 335 px
+  e não geram overflow.
+
+### Superfícies obrigatórias
+
+- Tipografia: título do FAQ em duas linhas, peso e tracking coerentes com os
+  demais headings; numeração com peso de interface inferior.
+- Espaçamento: 64 px entre título e accordion no desktop; os quadros de público
+  têm o mesmo topo; nenhum elemento se sobrepõe.
+- Cores: amarelo, azul-marinho e vermelho semântico permanecem consistentes com
+  os tokens existentes.
+- Imagens: não houve necessidade de novos assets; os ícones são da família já
+  usada pelo projeto.
+- Copy: dois critérios positivos foram adicionados sem promessa de lucro ou
+  resultado; o H1 e a copy acima da dobra não mudaram.
+
+### Histórico da iteração
+
+- [P1] O primeiro ajuste do FAQ deixou o título de duas linhas invadir a coluna
+  do accordion.
+  - Correção: coluna esquerda fixada em 32 rem, gap reduzido para 4 rem e heading
+    limitado a 4.5 rem.
+  - Pós-fix: há 64 px entre as colunas em 1906 × 860 e nenhuma sobreposição.
+
+### Verificação
+
+- Navegador integrado: 1906 × 860 e 390 × 844.
+- Accordion: pergunta 02 aberta com conteúdo correto.
+- Console: nenhum erro; apenas avisos já conhecidos do runtime Three/Spline.
+- Sem overflow horizontal.
+- `npm run lint`, `npm run typecheck` e `npm run build`: aprovados.
+
+Nenhum P0, P1 ou P2 permanece.
+
+final result: passed

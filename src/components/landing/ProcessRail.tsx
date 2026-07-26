@@ -1,4 +1,9 @@
 const processWords = [
+  "Testar pequeno",
+  "Encontrar",
+  "Validar",
+  "Analisar",
+  "Testar pequeno",
   "Encontrar",
   "Validar",
   "Analisar",
