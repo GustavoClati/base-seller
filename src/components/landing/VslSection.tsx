@@ -16,14 +16,14 @@ export function VslSection() {
       <div className="container">
         <Reveal>
           <SectionHeading
-            description="Veja como a base, as aulas e o processo se conectam para você pesquisar com mais clareza antes do primeiro pedido."
+            align="center"
+            description="Veja como a base, as aulas e o processo se conectam para você analisar com mais clareza antes do primeiro pedido."
             title={
               <>
-                Entenda antes de
-                <br />
-                {" "}
+                Entenda antes de colocar
+                <br />{" "}
                 <strong className="heading-accent">
-                  colocar dinheiro <span className="title-keep">em estoque.</span>
+                  dinheiro <span className="title-keep">em estoque.</span>
                 </strong>
               </>
             }

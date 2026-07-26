@@ -102,13 +102,12 @@ export function MethodScrollytelling() {
         <div className="method__heading">
           <h2>
             Encontre. Valide. Analise.
-            <br />
-            {" "}
-            <strong className="heading-accent">Só então teste.</strong>
+            <br />{" "}
+            <strong className="heading-accent">E só então teste.</strong>
           </h2>
           <p>
-            Um processo simples para evitar que a decisão comece e termine no
-            preço do fornecedor.
+            Quatro etapas para que a decisão não comece e termine no preço do
+            fornecedor.
           </p>
         </div>
 

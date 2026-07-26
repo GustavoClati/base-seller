@@ -254,3 +254,53 @@ o tom escuro original.
 Resultado: o robô substitui o antigo visual abstrato sem alterar a oferta,
 preserva o hero escuro e adiciona a interação de acompanhamento do ponteiro
 solicitada.
+
+### Correção ultrawide
+
+- Referência: captura do usuário em uma tela de aproximadamente 1920 px, onde o
+  limite retangular escuro do canvas ficava visível.
+- Causa: o fundo da cena e uma camada de acabamento opaca criavam um retângulo
+  com cor diferente do gradiente do hero.
+- Correção: o fundo da cena Spline passou a ser transparente e a camada
+  retangular de acabamento foi removida.
+- Verificação: navegador integrado em 1920 × 800, com inspeção direta via
+  `view_image` da referência e do render final.
+- Evidência: `docs/redesign-qa/11-interactive-robot-ultrawide.png`.
+- Resultado: nenhuma borda retangular permanece; o robô, o halo e o piso 3D
+  continuam visíveis e a interação com o ponteiro foi preservada.
+
+## Hierarquia editorial, primeira dobra e provas reais — julho de 2026
+
+- O hero passou a ocupar a altura útil da primeira dobra menos a faixa cinética,
+  deixando “Encontrar, Validar, Analisar, Testar pequeno” visível assim que a
+  página abre.
+- A primeira dobra foi verificada em 1920 × 800 e 1920 × 900, sem esconder CTAs,
+  fatos de confiança ou o robô.
+- Os títulos de VSL, base, método, entregáveis, planilha, autoridade e público
+  foram centralizados e reequilibrados para evitar a aparência de uma coluna
+  presa à esquerda.
+- Títulos principais revisados:
+  - “Entenda antes de colocar dinheiro em estoque.”
+  - “Comece com uma base. Avance com mais critério.”
+  - “Encontre. Valide. Analise. E só então teste.”
+  - “Conteúdo para agir. Não para acumular.”
+  - “Essa base nasceu dentro da operação.”
+- Os blocos 01, 02 e 03 dos entregáveis receberam mais altura, respiro interno e
+  distância entre linhas, preservando a leitura em sequência.
+- Na seção de autoridade, a apresentação de Gustavo foi posicionada abaixo do
+  título e centralizada, antes das provas visuais.
+- Fontes reais inspecionadas:
+  `imgs/prints/01.PNG` e `imgs/prints/02.PNG`.
+- Versões otimizadas usadas no site:
+  `public/images/real-sales-dashboard.webp` e
+  `public/images/real-live-sales.webp`.
+- Os dois prints foram apresentados como registros reais da operação, sem
+  promessa de lucro ou garantia de resultado.
+- Verificação visual concluída em 1920 × 800, 1920 × 900, 1440 × 900 e
+  390 × 844; títulos, imagens e espaçamentos não apresentam overflow ou corte.
+- A copy principal acima da dobra permaneceu inalterada.
+
+Resultado: a primeira dobra mostra a faixa de processo imediatamente, as seções
+ganharam hierarquia central e os placeholders de autoridade foram substituídos
+pelos prints reais fornecidos pelo usuário, sem incompatibilidades visuais
+materiais restantes.

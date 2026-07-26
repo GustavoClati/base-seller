@@ -4,34 +4,26 @@ import { siteConfig } from "@/lib/site-config";
 
 export function AuthoritySection() {
   const media = siteConfig.media;
-  const hasMedia =
-    siteConfig.siteMode === "preview" ||
-    Boolean(
-      media.authorPortrait ||
-        media.salesDashboard ||
-        media.ordersProof ||
-        media.supplierConversation,
-    );
+  const hasMedia = Boolean(media.salesDashboard || media.ordersProof);
 
   return (
-    <section className="section authority">
+    <section className="section authority" id="autoridade">
       <div className="container">
         <div className="authority__intro">
           <Reveal>
             <h2>
-              Não veio de uma pesquisa.
-              <br />
-              {" "}
+              Essa base nasceu
+              <br />{" "}
               <strong className="heading-accent">
-                Veio da operação.
+                dentro da operação.
               </strong>
             </h2>
           </Reveal>
           <Reveal delay={0.06}>
             <div className="authority__copy">
               <p>
-                Eu sou o {siteConfig.authorName} e trabalho com e-commerce
-                dentro de marketplaces. Durante a minha operação, fui
+                Eu sou {siteConfig.authorName} e trabalho com e-commerce
+                dentro do Mercado Livre. Durante a minha operação, fui
                 acumulando contatos, pedindo catálogos, comparando preços e
                 testando fornecedores.
               </p>
@@ -45,42 +37,49 @@ export function AuthoritySection() {
 
         {hasMedia ? (
           <div className="authority__media-grid">
-            <MediaSlot
-              alt="Foto real de Gustavo"
-              assetSrc={media.authorPortrait}
-              assetType="image"
-              aspectRatio="3 / 4"
-              id="foto-gustavo"
-              label="Adicionar foto real do Gustavo"
-              siteMode={siteConfig.siteMode}
-            />
-            <MediaSlot
-              alt="Print real do painel de vendas com dados sensíveis ocultos"
-              assetSrc={media.salesDashboard}
-              assetType="image"
-              aspectRatio="16 / 9"
-              id="print-painel-vendas"
-              label="Adicionar print real do painel"
-              siteMode={siteConfig.siteMode}
-            />
-            <MediaSlot
-              alt="Fotografia real de um pedido da operação"
-              assetSrc={media.ordersProof}
-              assetType="image"
-              aspectRatio="4 / 3"
-              id="prova-pedidos"
-              label="Adicionar prova real de pedido"
-              siteMode={siteConfig.siteMode}
-            />
-            <MediaSlot
-              alt="Conversa real com fornecedor com dados pessoais ocultos"
-              assetSrc={media.supplierConversation}
-              assetType="image"
-              aspectRatio="4 / 3"
-              id="conversa-fornecedor"
-              label="Adicionar conversa real com fornecedor"
-              siteMode={siteConfig.siteMode}
-            />
+            <figure className="authority-proof authority-proof--summary">
+              <MediaSlot
+                alt="Captura real do painel da operação com vendas, unidades e visitas"
+                assetSrc={media.salesDashboard}
+                assetType="image"
+                aspectRatio="1106 / 284"
+                className="authority-proof__image"
+                id="print-painel-vendas"
+                label="Adicionar print real do painel"
+                siteMode={siteConfig.siteMode}
+              />
+              <figcaption>
+                <span>01</span>
+                <div>
+                  <strong>Painel real da operação</strong>
+                  <p>
+                    Visão consolidada de vendas, unidades, visitas e conversão.
+                  </p>
+                </div>
+              </figcaption>
+            </figure>
+
+            <figure className="authority-proof authority-proof--live">
+              <MediaSlot
+                alt="Captura real do painel de vendas do dia no Mercado Livre"
+                assetSrc={media.ordersProof}
+                assetType="image"
+                aspectRatio="1185 / 768"
+                className="authority-proof__image"
+                id="print-vendas-ao-vivo"
+                label="Adicionar print real de vendas"
+                siteMode={siteConfig.siteMode}
+              />
+              <figcaption>
+                <span>02</span>
+                <div>
+                  <strong>Vendas do dia acompanhadas ao vivo</strong>
+                  <p>
+                    Um recorte real da rotina de análise dentro do marketplace.
+                  </p>
+                </div>
+              </figcaption>
+            </figure>
           </div>
         ) : null}
       </div>

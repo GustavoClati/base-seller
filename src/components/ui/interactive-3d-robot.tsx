@@ -11,6 +11,7 @@ interface InteractiveRobotSplineProps {
 
 interface SplineApplicationWithBranding {
   requestRender?: () => void;
+  setBackgroundColor?: (color: string) => void;
   _renderer?: {
     pipeline?: {
       setWatermark?: (texture: null) => void;
@@ -35,6 +36,7 @@ export function InteractiveRobotSpline({
     const splineApplication =
       application as SplineApplicationWithBranding;
 
+    splineApplication.setBackgroundColor?.("rgba(5, 10, 18, 0)");
     splineApplication._renderer?.pipeline?.setWatermark?.(null);
     splineApplication.requestRender?.();
   }

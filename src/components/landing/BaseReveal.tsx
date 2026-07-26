@@ -1,21 +1,30 @@
 import { MediaSlot } from "@/components/ui/MediaSlot";
 import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { siteConfig } from "@/lib/site-config";
 
 export function BaseReveal() {
   return (
     <section className="section base-reveal" id="como-funciona">
       <div className="container">
+        <Reveal>
+          <SectionHeading
+            align="center"
+            className="base-reveal__heading"
+            title={
+              <>
+                Comece com uma base.
+                <br />{" "}
+                <strong className="heading-accent">
+                  Avance com <span className="title-keep">mais critério.</span>
+                </strong>
+              </>
+            }
+          />
+        </Reveal>
+
         <div className="base-reveal__layout">
           <Reveal className="base-reveal__copy">
-            <h2>
-              Comece com uma base.
-              <br />
-              {" "}
-              <strong className="heading-accent">
-                Avance com <span className="title-keep">mais critério.</span>
-              </strong>
-            </h2>
             <p className="base-reveal__description">
               A Base do Seller reúne os fornecedores que fizeram parte da minha
               operação e organiza o essencial em um único lugar: nome,

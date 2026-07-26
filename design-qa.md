@@ -113,12 +113,29 @@ Nenhum P0, P1 ou P2 permanece.
 
 ## Follow-up Polish
 
-- [P3] Quando fotos e provas reais estiverem disponíveis, substituir os slots da
-  seção de autoridade sem alterar a estrutura visual.
+- Concluído: os slots da seção de autoridade foram substituídos pelos dois
+  prints reais da operação enviados pelo usuário, com versões WebP otimizadas.
+
+## Hierarquia editorial e provas reais — julho de 2026
+
+- Hero validado em 1920 × 800 e 1920 × 900 com a faixa amarela do processo
+  visível na primeira dobra.
+- Títulos das seções principais centralizados e revisados para melhorar ritmo,
+  escaneabilidade e retenção.
+- Entregáveis 01, 02 e 03 separados por mais espaço vertical e superfícies
+  editoriais discretas.
+- A apresentação “Eu sou Gustavo e trabalho com e-commerce...” foi colocada
+  abaixo do título da seção de autoridade.
+- `imgs/prints/01.PNG` e `imgs/prints/02.PNG` foram inspecionados e convertidos
+  para `public/images/real-sales-dashboard.webp` e
+  `public/images/real-live-sales.webp`.
+- Desktop verificado em 1440 × 900; mobile em 390 × 844.
+- Nenhum overflow, corte de imagem ou quebra material de título permanece.
+- A copy principal acima da dobra não foi alterada.
 
 ## Verificação técnica
 
-- Navegador integrado: desktop 1146 × 864 e mobile 390 × 844.
+- Navegador integrado: 1920 × 800, 1920 × 900, 1440 × 900 e 390 × 844.
 - Sem overflow horizontal.
 - Console sem erros ou avisos.
 - `npm run lint`, `npm run typecheck` e `npm run build` aprovados.

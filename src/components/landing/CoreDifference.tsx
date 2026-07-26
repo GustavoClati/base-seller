@@ -10,9 +10,8 @@ export function CoreDifference() {
       <div className="container">
         <div className="core-difference__layout">
           <h2>
-            A base acelera o começo.
-            <br />
-            {" "}
+            A base abre o caminho.
+            <br />{" "}
             <strong className="heading-accent">
               O método melhora a decisão.
             </strong>

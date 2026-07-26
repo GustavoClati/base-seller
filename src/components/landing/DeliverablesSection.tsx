@@ -8,14 +8,14 @@ export function DeliverablesSection() {
       <div className="container">
         <Reveal>
           <SectionHeading
-            description="Você recebe o necessário para agir, sem um curso de dezenas de horas ou bônus criados apenas para aumentar volume."
+            align="center"
+            description="Você recebe o necessário para pesquisar, analisar e agir — sem dezenas de horas de conteúdo ou bônus criados apenas para aumentar volume."
             title={
               <>
-                Menos conteúdo para acumular.
-                <br />
-                {" "}
+                Conteúdo para agir.
+                <br />{" "}
                 <strong className="heading-accent">
-                  Mais clareza para agir.
+                  Não para acumular.
                 </strong>
               </>
             }
@@ -25,11 +25,7 @@ export function DeliverablesSection() {
         <div className="deliverables__list">
           {deliverables.map((item, index) => (
             <Reveal delay={index * 0.05} key={item.number}>
-              <article
-                className={`deliverable ${
-                  index % 2 ? "deliverable--reverse" : ""
-                }`}
-              >
+              <article className="deliverable">
                 <span className="deliverable__number">{item.number}</span>
                 <div>
                   <h3>{item.title}</h3>
