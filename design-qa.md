@@ -137,7 +137,42 @@ Nenhum P0, P1 ou P2 permanece.
 
 - Navegador integrado: 1920 × 800, 1920 × 900, 1440 × 900 e 390 × 844.
 - Sem overflow horizontal.
-- Console sem erros ou avisos.
+- Console sem erros; permanecem apenas avisos internos não bloqueantes do
+  runtime Spline.
 - `npm run lint`, `npm run typecheck` e `npm run build` aprovados.
+
+## Hero compacto e robô ancorado — julho de 2026
+
+- Fonte visual:
+  `C:\Users\Gustavo\AppData\Local\Temp\codex-clipboard-05f9335d-5461-48bc-8a2b-d769715c0e43.png`.
+- Implementação:
+  `docs/redesign-qa/16-hero-final-transparent-1920x930.png`.
+- Comparação conjunta:
+  `docs/redesign-qa/17-hero-final-transparent-comparison.png`.
+- Viewport e normalização: fonte e implementação em 1920 × 930, CSS viewport
+  1920 × 930, `devicePixelRatio: 1`, sem redimensionamento de densidade.
+- Estado: topo da página, campanha ativa, animações carregadas e `scrollY: 0`.
+- [P2] Evidência inicial: o hero terminava em 918 px e a faixa de 72 px começava
+  em 918 px; somente a borda superior aparecia no viewport de 930 px.
+- Correção: o modo compacto passou a abranger telas de até 1000 px de altura e
+  o hero termina em 852 px. A faixa ocupa 852–924 px e aparece inteira.
+- Correção de composição: o contêiner interno passou a ocupar a altura útil do
+  hero; o canvas do robô termina em 851 px, junto à faixa, e seu limite direito
+  chega a 1913 px sem overflow horizontal.
+- Tipografia: família, peso, escala e composição de quatro linhas do H1 foram
+  preservados; nenhuma palavra ou CTA foi alterado.
+- Espaçamento: descrição, botões e fatos de confiança permanecem integralmente
+  acima da faixa; o último bloco termina em 792 px.
+- Cores: fundo, amarelo da oferta e superfícies azul-marinho permanecem iguais à
+  referência.
+- Imagem: o robô mantém transparência, nitidez, halo e piso 3D, sem retorno do
+  retângulo escuro.
+- Interação: a cabeça foi testada em dois pontos do ponteiro e mudou de direção
+  sem deslocar o layout.
+- Responsividade: 1440 × 900 validado com a faixa inteira e sem overflow;
+  390 × 844 mantém o fluxo mobile existente sem overflow horizontal.
+- Comparação focada adicional não foi necessária porque todos os elementos
+  críticos do hero estão legíveis na comparação conjunta em tamanho nativo.
+- Pós-fix: nenhum P0, P1 ou P2 permanece.
 
 final result: passed

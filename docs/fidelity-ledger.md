@@ -304,3 +304,24 @@ Resultado: a primeira dobra mostra a faixa de processo imediatamente, as seçõe
 ganharam hierarquia central e os placeholders de autoridade foram substituídos
 pelos prints reais fornecidos pelo usuário, sem incompatibilidades visuais
 materiais restantes.
+
+## Ajuste final do hero em 1920 × 930 — julho de 2026
+
+- Referência: captura do usuário em 1920 × 930.
+- Problema medido: o hero terminava em 918 px e deixava visível somente a borda
+  superior da faixa de processo.
+- Resultado medido: o hero agora termina em 852 px e a faixa amarela ocupa
+  852–924 px, inteiramente dentro da primeira dobra.
+- O H1 mantém a escala e a composição de quatro linhas da referência.
+- O robô foi deslocado para o canto inferior direito: o canvas termina em
+  1913 × 851 px e o piso 3D encontra a faixa sem lacuna.
+- O fundo transparente e a ausência do retângulo escuro foram preservados.
+- O movimento da cabeça foi verificado em dois pontos distintos do ponteiro.
+- Desktop adicional validado em 1440 × 900 e mobile em 390 × 844, sem overflow.
+- Evidências:
+  `docs/redesign-qa/16-hero-final-transparent-1920x930.png` e
+  `docs/redesign-qa/17-hero-final-transparent-comparison.png`.
+- A copy, os CTAs e os fatos de confiança acima da dobra não foram alterados.
+
+Resultado: a faixa fica totalmente visível ao abrir a página e o robô permanece
+rente à faixa e ao canto direito, sem regressões materiais.
