@@ -1,6 +1,11 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "motion/react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "motion/react";
 
 import { navigationItems } from "@/content/site-content";
 import { trackEvent } from "@/lib/analytics";
@@ -8,7 +13,8 @@ import { getCheckoutHref } from "@/lib/site-config";
 import { BrandWordmark } from "@/components/ui/BrandWordmark";
 import { TrackedCta } from "@/components/ui/TrackedCta";
 
-export function FloatingHeader() {
+export function FloatingHeader({ hasCampaign = false }: { hasCampaign?: boolean }) {
+  const reduceMotion = useReducedMotion();
   const { scrollY, scrollYProgress } = useScroll();
   const headerBackground = useTransform(
     scrollY,
@@ -29,8 +35,10 @@ export function FloatingHeader() {
         style={{ scaleX: scrollYProgress }}
       />
       <motion.header
-        className="floating-header"
-        initial={{ opacity: 0, y: -14 }}
+        className={`floating-header${
+          hasCampaign ? " floating-header--with-campaign" : ""
+        }`}
+        initial={reduceMotion ? false : { opacity: 0, y: -14 }}
         animate={{ opacity: 1, y: 0 }}
         style={{
           backgroundColor: headerBackground,

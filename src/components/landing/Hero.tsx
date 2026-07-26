@@ -6,13 +6,13 @@ import {
   useScroll,
   useTransform,
 } from "motion/react";
+import { FileSpreadsheet, ShieldCheck, UsersRound } from "lucide-react";
 import { useRef } from "react";
 
-import { siteConfig } from "@/lib/site-config";
-import { getCheckoutHref } from "@/lib/site-config";
+import { AbstractBaseVisual } from "@/components/landing/AbstractBaseVisual";
 import { MediaSlot } from "@/components/ui/MediaSlot";
 import { TrackedCta } from "@/components/ui/TrackedCta";
-import { AbstractBaseVisual } from "@/components/landing/AbstractBaseVisual";
+import { getCheckoutHref, siteConfig } from "@/lib/site-config";
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -34,18 +34,43 @@ export function Hero() {
           style={{ opacity: reduceMotion ? 1 : copyOpacity }}
         >
           <div className="hero__title-mask">
-            <motion.h1
-              animate={{ y: 0 }}
-              initial={reduceMotion ? false : { y: "110%" }}
-              transition={{
-                duration: 0.9,
-                delay: 0.15,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-            >
-              Pare de procurar
-              <br />
-              {" "}fornecedores no escuro.
+            <motion.h1 aria-label="Pare de procurar fornecedores no escuro.">
+              <motion.span
+                animate={{ opacity: 1, y: 0 }}
+                className="hero__title-line"
+                initial={reduceMotion ? false : { opacity: 0, y: 28 }}
+                transition={{
+                  duration: 0.75,
+                  delay: 0.12,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
+                Pare de procurar
+              </motion.span>
+              <motion.strong
+                animate={{ opacity: 1, y: 0 }}
+                className="hero__title-line hero__title-emphasis"
+                initial={reduceMotion ? false : { opacity: 0, y: 28 }}
+                transition={{
+                  duration: 0.75,
+                  delay: 0.22,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
+                fornecedores
+              </motion.strong>
+              <motion.span
+                animate={{ opacity: 1, y: 0 }}
+                className="hero__title-line"
+                initial={reduceMotion ? false : { opacity: 0, y: 28 }}
+                transition={{
+                  duration: 0.75,
+                  delay: 0.32,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
+                no escuro.
+              </motion.span>
             </motion.h1>
           </div>
 
@@ -55,7 +80,7 @@ export function Hero() {
             initial={reduceMotion ? false : { opacity: 0, y: 20 }}
             transition={{
               duration: 0.7,
-              delay: 0.55,
+              delay: 0.5,
               ease: [0.22, 1, 0.36, 1],
             }}
           >
@@ -70,7 +95,7 @@ export function Hero() {
             initial={reduceMotion ? false : { opacity: 0, y: 18 }}
             transition={{
               duration: 0.7,
-              delay: 0.7,
+              delay: 0.66,
               ease: [0.22, 1, 0.36, 1],
             }}
           >
@@ -87,15 +112,36 @@ export function Hero() {
             </TrackedCta>
           </motion.div>
 
-          <motion.p
-            animate={{ opacity: 1 }}
-            className="hero__microcopy"
-            initial={reduceMotion ? false : { opacity: 0 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
+          <motion.ul
+            animate={{ opacity: 1, y: 0 }}
+            aria-label="O que acompanha a Base do Seller"
+            className="hero__confidence"
+            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+            transition={{
+              duration: 0.65,
+              delay: 0.84,
+              ease: [0.22, 1, 0.36, 1],
+            }}
           >
-            <span aria-hidden="true" />
-            Treinamento prático + base organizada em Excel
-          </motion.p>
+            <li>
+              <UsersRound aria-hidden="true" size={21} strokeWidth={1.8} />
+              <span>
+                <strong>{siteConfig.supplierCount}</strong> fornecedores
+              </span>
+            </li>
+            <li>
+              <FileSpreadsheet
+                aria-hidden="true"
+                size={21}
+                strokeWidth={1.8}
+              />
+              <span>Treinamento + planilha</span>
+            </li>
+            <li>
+              <ShieldCheck aria-hidden="true" size={21} strokeWidth={1.8} />
+              <span>{siteConfig.offer.guaranteeDays} dias de garantia</span>
+            </li>
+          </motion.ul>
         </motion.div>
 
         <motion.div

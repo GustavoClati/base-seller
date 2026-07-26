@@ -8,22 +8,38 @@ import { FinalCta } from "@/components/landing/FinalCta";
 import { Hero } from "@/components/landing/Hero";
 import { MethodScrollytelling } from "@/components/landing/MethodScrollytelling";
 import { OfferSection } from "@/components/landing/OfferSection";
+import { ObjectionBreakers } from "@/components/landing/ObjectionBreakers";
 import { ProblemSequence } from "@/components/landing/ProblemSequence";
 import { SpreadsheetPreview } from "@/components/landing/SpreadsheetPreview";
 import { TestimonialsSection } from "@/components/landing/TestimonialsSection";
 import { TransparencySection } from "@/components/landing/TransparencySection";
 import { VslSection } from "@/components/landing/VslSection";
 import { FloatingHeader } from "@/components/layout/FloatingHeader";
+import { CampaignBar } from "@/components/layout/CampaignBar";
 import { Footer } from "@/components/layout/Footer";
 import { MobileStickyCta } from "@/components/layout/MobileStickyCta";
 import { PageAnalytics } from "@/components/layout/PageAnalytics";
-import { siteConfig } from "@/lib/site-config";
+import { getCheckoutHref, siteConfig } from "@/lib/site-config";
 
 export default function Home() {
+  const campaignEnabled = siteConfig.promotion.enabled;
+
   return (
-    <>
+    <div
+      className={`site-shell${
+        campaignEnabled ? " site-shell--campaign" : ""
+      }`}
+    >
       <PageAnalytics />
-      <FloatingHeader />
+      <CampaignBar
+        ctaHref={getCheckoutHref()}
+        enabled={campaignEnabled}
+        endsAt={siteConfig.promotion.endsAt}
+        expiredText={siteConfig.promotion.expiredText}
+        label={siteConfig.promotion.label}
+        previewMode={siteConfig.siteMode === "preview"}
+      />
+      <FloatingHeader hasCampaign={campaignEnabled} />
       <main id="conteudo-principal">
         <Hero />
         <VslSection />
@@ -36,6 +52,7 @@ export default function Home() {
         <AuthoritySection />
         <TransparencySection />
         <AudienceSection />
+        <ObjectionBreakers />
         <TestimonialsSection testimonials={siteConfig.testimonials} />
         <OfferSection />
         <FaqSection />
@@ -43,6 +60,6 @@ export default function Home() {
       </main>
       <Footer />
       <MobileStickyCta />
-    </>
+    </div>
   );
 }

@@ -50,6 +50,17 @@ export const siteContent = {
     guaranteeDays: 7,
   },
 
+  promotion: {
+    enabled: process.env.NEXT_PUBLIC_PROMOTION_ENABLED !== "false",
+    endsAt: process.env.NEXT_PUBLIC_PROMOTION_END_AT?.trim() ?? "",
+    label:
+      process.env.NEXT_PUBLIC_PROMOTION_LABEL?.trim() ||
+      "Condição especial da campanha",
+    expiredText:
+      process.env.NEXT_PUBLIC_PROMOTION_EXPIRED_TEXT?.trim() ||
+      "Esta condição foi encerrada",
+  },
+
   media: {
     heroVideo: null,
     heroPoster: null,
@@ -161,6 +172,29 @@ export const audience = {
     "Quer pular a etapa de pesquisa e análise",
   ],
 } as const;
+
+export const objectionBreakers = [
+  {
+    question: "E se eu ainda não souber analisar um produto?",
+    answer:
+      "As aulas mostram o processo de análise antes do primeiro teste, considerando custo, frete, tarifas, imposto, preço e concorrência.",
+  },
+  {
+    question: "E se os fornecedores mudarem as condições?",
+    answer:
+      "Você aprende a confirmar catálogo, estoque, pedido mínimo, envio, nota fiscal e condições comerciais diretamente antes de comprar.",
+  },
+  {
+    question: "18 fornecedores não é pouco?",
+    answer:
+      "A proposta não é entregar centenas de contatos desconhecidos. É começar com uma base menor, usada na operação, e aprender um processo para encontrar outros.",
+  },
+  {
+    question: "E se eu estiver começando agora?",
+    answer:
+      "O conteúdo segue uma sequência direta: encontrar, validar, analisar e testar com uma quantidade menor antes de aumentar o investimento.",
+  },
+] as const;
 
 export const offerItems = [
   "Treinamento Base do Seller",

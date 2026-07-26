@@ -14,7 +14,9 @@ export type CtaLocation =
   | "header"
   | "hero"
   | "method"
+  | "objection_breakers"
   | "offer"
+  | "campaign_bar"
   | "mobile_sticky"
   | "final_cta";
 

@@ -40,6 +40,18 @@ export function validateSiteConfiguration(
     missing.push("NEXT_PUBLIC_OFFER_ACCESS_FAQ_ANSWER");
   }
 
+  if (config.promotion.enabled) {
+    const promotionEnd = Date.parse(config.promotion.endsAt);
+
+    if (!config.promotion.endsAt || Number.isNaN(promotionEnd)) {
+      missing.push(
+        "NEXT_PUBLIC_PROMOTION_END_AT (data e hora absolutas válidas)",
+      );
+    } else if (promotionEnd <= Date.now()) {
+      missing.push("NEXT_PUBLIC_PROMOTION_END_AT (data futura)");
+    }
+  }
+
   if (!config.supportEmail || !config.supportEmail.includes("@")) {
     missing.push("NEXT_PUBLIC_SUPPORT_EMAIL (e-mail válido)");
   }

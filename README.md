@@ -51,6 +51,20 @@ NEXT_PUBLIC_OFFER_ACCESS_FAQ_ANSWER=
 
 Não adicione preço riscado sem histórico real. A informação de acesso deve refletir o fluxo definitivo da área de membros.
 
+### Configurar a campanha e o temporizador
+
+```env
+NEXT_PUBLIC_PROMOTION_ENABLED=true
+NEXT_PUBLIC_PROMOTION_END_AT=2026-07-30T23:59:59-03:00
+NEXT_PUBLIC_PROMOTION_LABEL=Condição especial da campanha
+NEXT_PUBLIC_PROMOTION_EXPIRED_TEXT=Esta condição foi encerrada
+```
+
+Em `preview`, quando `NEXT_PUBLIC_PROMOTION_END_AT` está vazio, a barra mostra
+uma demonstração de 15 minutos identificada como prévia. Em `live`, o build só
+aceita a campanha ativada quando existe uma data absoluta, válida e futura. O
+contador nunca reinicia quando uma data real está configurada.
+
 ### Configurar área de membros e suporte
 
 ```env
@@ -117,6 +131,8 @@ NEXT_PUBLIC_SITE_URL=https://seudominio.com.br
 NEXT_PUBLIC_OFFER_PRICE=
 NEXT_PUBLIC_OFFER_ACCESS_NOTE=
 NEXT_PUBLIC_OFFER_ACCESS_FAQ_ANSWER=
+NEXT_PUBLIC_PROMOTION_ENABLED=true
+NEXT_PUBLIC_PROMOTION_END_AT=
 ```
 
 Também substitua os scaffolds de `src/content/legal-content.ts` pelos textos revisados de termos, privacidade e reembolso.

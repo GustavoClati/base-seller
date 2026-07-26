@@ -104,3 +104,46 @@ Slots: `hero-video`, `vsl-principal`, `screenshot-planilha`, `foto-gustavo`, `pr
 - 1280 px+: escala máxima com largura de leitura limitada.
 
 Viewports de QA: 1440×900, 1280×800, 1024×768, 768×1024, 430×932, 390×844 e 375×812.
+
+## Revisão de conversão — julho de 2026
+
+Esta revisão mantém a direção escura original, mas troca o tom excessivamente
+editorial por uma hierarquia de página de vendas mais direta.
+
+Novas referências visuais:
+
+- Campanha e hero desktop:
+  `C:\Users\Gustavo\.codex\generated_images\019f9ac6-f113-7651-b16c-c37974fc94c7\call_taYbKxF4lf9QXiWCwCjMjRKv.png`
+- Objeções e oferta:
+  `C:\Users\Gustavo\.codex\generated_images\019f9ac6-f113-7651-b16c-c37974fc94c7\call_Ydkq4vvYnFvoUzK3819su1q4.png`
+- Hero mobile:
+  `C:\Users\Gustavo\.codex\generated_images\019f9ac6-f113-7651-b16c-c37974fc94c7\call_oW49GeX09G9M06e2e0yeDU9Z.png`
+
+Decisões principais:
+
+- H1 com peso 760–820, entrelinha confortável e ênfase dourada apenas em
+  “fornecedores”.
+- H2 com peso 700 e line-height 1.06 no desktop e 1.08 no mobile.
+- Barra fixa de campanha acima do header, com números tabulares e CTA dourado.
+- Em preview, o contador de 15 minutos é identificado como demonstração.
+- Em live, a campanha exige uma data absoluta, válida e futura; nunca reinicia
+  ao recarregar.
+- A faixa de confiança do hero usa apenas fatos configurados: 18 fornecedores,
+  treinamento + planilha e garantia de 7 dias.
+- O bloco “Antes de decidir” responde objeções sem depoimentos, números de
+  resultado ou promessas inventadas.
+- O scrollytelling do problema foi reduzido de 225vh para 165vh; cada etapa do
+  método caiu de 68vh para 50vh.
+- Movimento adicional aparece como entrada escalonada do H1, reveal das
+  objeções e brilho único no CTA da campanha. `prefers-reduced-motion` continua
+  removendo movimento não essencial.
+
+Ordem atualizada no fechamento:
+
+1. Transparência.
+2. Para quem é.
+3. Quebra de objeções.
+4. Depoimentos, somente quando reais.
+5. Oferta e garantia.
+6. FAQ.
+7. CTA final.
