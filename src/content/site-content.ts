@@ -70,7 +70,7 @@ export const siteContent = {
     spreadsheetPreview: "/images/spreadsheet-illustration.webp",
     authorPortrait: null,
     salesDashboard: "/images/real-sales-dashboard.webp",
-    ordersProof: "/images/real-live-sales.webp",
+    ordersProof: "/images/real-live-sales-current.webp",
     supplierConversation: null,
     finalCtaImage: "/images/final-cta-start-with-base.webp",
     ogImage: null,

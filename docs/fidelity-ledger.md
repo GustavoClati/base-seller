@@ -351,6 +351,31 @@ rente à faixa e ao canto direito, sem regressões materiais.
 
 Resultado: aprovado, sem incompatibilidades visuais P0, P1 ou P2.
 
+## Ajuste final de scroll, processo e prints — julho de 2026
+
+- Em 1920 × 1080, os três textos animados da seção de objeções foram validados
+  com uma única linha cada: “Preço sem frete não é custo.”, “Faturamento sem
+  despesas não é margem.” e “Contato sem análise não é oportunidade.”.
+- A fonte dos textos animados ficou em 56,8 px no desktop, com `white-space:
+  nowrap` e zero overflow horizontal.
+- A chegada em “Processo” mantém os 12 confetes amarelos, mas remove a estrela
+  fixa de celebração.
+- Os prints reais da operação voltaram para uma leitura empilhada e centralizada,
+  com legendas centralizadas abaixo de cada imagem.
+- O segundo print passou a usar o asset novo
+  `public/images/real-live-sales-current.webp`, validado no navegador com
+  dimensão natural 743 × 666.
+- Mobile validado em 390 × 844, com zero overflow horizontal e respiro extra no
+  fim da seção de objeções para o CTA fixo não cobrir o fechamento.
+- Console do navegador validado sem logs ou erros.
+- Evidências:
+  `docs/redesign-qa/48-final-pass-text-after.png`,
+  `docs/redesign-qa/49-process-after.png`,
+  `docs/redesign-qa/50-authority-after.png` e
+  `docs/redesign-qa/51-mobile-final-pass.png`.
+
+Resultado: aprovado, sem incompatibilidades visuais P0, P1 ou P2.
+
 ## Narrativa guiada, prova alinhada e ancoragem de preço — julho de 2026
 
 - “Contato encontrado ainda não é oportunidade.” passou a ocupar exatamente

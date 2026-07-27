@@ -1,6 +1,6 @@
 "use client";
 
-import { Database, Route, SearchCheck, Sparkles } from "lucide-react";
+import { Database, Route, SearchCheck } from "lucide-react";
 import {
   AnimatePresence,
   motion,
@@ -148,7 +148,6 @@ export function CoreDifference() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                 >
-                  <Sparkles size={20} strokeWidth={1.8} />
                   {confetti.map((piece, index) => (
                     <motion.i
                       className="base-to-process__confetti"

@@ -41,7 +41,7 @@ export function AuthoritySection() {
                 alt="Captura real do painel da operação com vendas, unidades e visitas"
                 assetSrc={media.salesDashboard}
                 assetType="image"
-                aspectRatio="16 / 9"
+                aspectRatio="1105 / 284"
                 className="authority-proof__image"
                 id="print-painel-vendas"
                 label="Adicionar print real do painel"
@@ -63,7 +63,7 @@ export function AuthoritySection() {
                 alt="Captura real do painel de vendas do dia no Mercado Livre"
                 assetSrc={media.ordersProof}
                 assetType="image"
-                aspectRatio="16 / 9"
+                aspectRatio="743 / 666"
                 className="authority-proof__image"
                 id="print-vendas-ao-vivo"
                 label="Adicionar print real de vendas"
