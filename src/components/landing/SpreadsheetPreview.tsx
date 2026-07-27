@@ -19,11 +19,11 @@ export function SpreadsheetPreview() {
     <section className="section spreadsheet-preview" id="planilha">
       <div className="container">
         <Reveal className="spreadsheet-preview__heading">
-          <h2>
-            {siteConfig.supplierCount} fornecedores.
-            <br />
-            {" "}
-            <strong className="heading-accent">
+          <h2 className="centered-title">
+            <span className="centered-title__line">
+              {siteConfig.supplierCount} fornecedores.
+            </span>
+            <strong className="centered-title__line heading-accent">
               Um só lugar <span className="title-keep">para começar.</span>
             </strong>
           </h2>

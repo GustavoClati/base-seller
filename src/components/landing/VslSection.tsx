@@ -20,9 +20,10 @@ export function VslSection() {
             description="Veja como a base, as aulas e o processo se conectam para você analisar com mais clareza antes do primeiro pedido."
             title={
               <>
-                Entenda antes de colocar
-                <br />{" "}
-                <strong className="heading-accent">
+                <span className="centered-title__line">
+                  Entenda antes de colocar
+                </span>
+                <strong className="centered-title__line heading-accent">
                   dinheiro <span className="title-keep">em estoque.</span>
                 </strong>
               </>

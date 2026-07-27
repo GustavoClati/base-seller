@@ -10,7 +10,12 @@ export function TestimonialsSection({
   return (
     <section className="section testimonials" aria-labelledby="testimonials">
       <div className="container">
-        <h2 id="testimonials">Experiências de quem aplicou o processo.</h2>
+        <h2 className="centered-title" id="testimonials">
+          <span className="centered-title__line">Experiências de quem</span>
+          <strong className="centered-title__line heading-accent">
+            aplicou o processo.
+          </strong>
+        </h2>
         <div className="testimonials__list">
           {testimonials.map((testimonial) => (
             <figure key={`${testimonial.name}-${testimonial.text}`}>

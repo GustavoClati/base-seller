@@ -39,6 +39,7 @@ export const siteContent = {
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "") ?? "",
 
   offer: {
+    compareAtPrice: "R$ 119,89",
     price: process.env.NEXT_PUBLIC_OFFER_PRICE?.trim() || "R$ 59,89",
     installments: process.env.NEXT_PUBLIC_OFFER_INSTALLMENTS?.trim() ?? "",
     paymentNote:

@@ -46,7 +46,18 @@ export function OfferSection() {
 
           <div className="offer__price">
             <span>Investimento</span>
-            <strong>{siteConfig.offer.price || "Preço a configurar"}</strong>
+            <div className="offer__price-stack">
+              <p className="offer__compare-price">
+                <span>De</span>
+                <s>{siteConfig.offer.compareAtPrice}</s>
+              </p>
+              <p className="offer__current-price">
+                <span>por</span>
+                <strong>
+                  {siteConfig.offer.price || "Preço a configurar"}
+                </strong>
+              </p>
+            </div>
             {siteConfig.offer.installments ? (
               <small>{siteConfig.offer.installments}</small>
             ) : null}

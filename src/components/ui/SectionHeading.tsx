@@ -17,7 +17,9 @@ export function SectionHeading({
     <div
       className={`section-heading section-heading--${align} ${className}`}
     >
-      <h2>{title}</h2>
+      <h2 className={align === "center" ? "centered-title" : undefined}>
+        {title}
+      </h2>
       {description ? <p>{description}</p> : null}
     </div>
   );

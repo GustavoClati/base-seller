@@ -9,13 +9,8 @@ import {
 import { FileSpreadsheet, ShieldCheck, UsersRound } from "lucide-react";
 import { useRef } from "react";
 
-import { MediaSlot } from "@/components/ui/MediaSlot";
 import { TrackedCta } from "@/components/ui/TrackedCta";
-import { InteractiveRobotSpline } from "@/components/ui/interactive-3d-robot";
 import { getCheckoutHref, siteConfig } from "@/lib/site-config";
-
-const ROBOT_SCENE_URL =
-  "https://prod.spline.design/PyzDhpQ9E5f1E3MT/scene.splinecode";
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -25,8 +20,6 @@ export function Hero() {
     offset: ["start start", "end start"],
   });
   const copyOpacity = useTransform(scrollYProgress, [0, 0.72], [1, 0.28]);
-  const visualScale = useTransform(scrollYProgress, [0, 1], [1, 1.045]);
-  const visualY = useTransform(scrollYProgress, [0, 1], [0, 42]);
 
   return (
     <section className="hero" id="hero" ref={ref}>
@@ -60,20 +53,8 @@ export function Hero() {
                   ease: [0.22, 1, 0.36, 1],
                 }}
               >
-                fornecedores
+                fornecedores no escuro.
               </motion.strong>
-              <motion.span
-                animate={{ opacity: 1, y: 0 }}
-                className="hero__title-line"
-                initial={reduceMotion ? false : { opacity: 0, y: 28 }}
-                transition={{
-                  duration: 0.75,
-                  delay: 0.32,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-              >
-                no escuro.
-              </motion.span>
             </motion.h1>
           </div>
 
@@ -108,7 +89,6 @@ export function Hero() {
             <TrackedCta
               href="#como-funciona"
               location="hero"
-              showArrow={false}
               variant="secondary"
             >
               Ver como funciona
@@ -145,48 +125,6 @@ export function Hero() {
               <span>{siteConfig.offer.guaranteeDays} dias de garantia</span>
             </li>
           </motion.ul>
-        </motion.div>
-
-        <motion.div
-          animate={{ opacity: 1, scale: 1 }}
-          className="hero__visual"
-          initial={reduceMotion ? false : { opacity: 0, scale: 0.97 }}
-          style={{
-            scale: reduceMotion ? 1 : visualScale,
-            y: reduceMotion ? 0 : visualY,
-          }}
-          transition={{
-            duration: 1.1,
-            delay: 0.2,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-        >
-          {siteConfig.media.heroVideo ? (
-            <MediaSlot
-              alt="Apresentação visual da Base do Seller"
-              assetSrc={siteConfig.media.heroVideo}
-              assetType="video"
-              className="hero__video"
-              id="hero-video"
-              label="Adicionar vídeo principal"
-              poster={siteConfig.media.heroPoster}
-              siteMode={siteConfig.siteMode}
-              videoMode="background"
-            />
-          ) : (
-            <div
-              aria-label="Robô 3D interativo que acompanha o movimento do ponteiro"
-              className="seller-bot"
-              role="img"
-            >
-              <div aria-hidden="true" className="seller-bot__stage">
-                <InteractiveRobotSpline
-                  className="seller-bot__canvas"
-                  scene={ROBOT_SCENE_URL}
-                />
-              </div>
-            </div>
-          )}
         </motion.div>
       </div>
 

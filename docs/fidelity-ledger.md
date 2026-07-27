@@ -351,6 +351,59 @@ rente à faixa e ao canto direito, sem regressões materiais.
 
 Resultado: aprovado, sem incompatibilidades visuais P0, P1 ou P2.
 
+## Narrativa guiada, prova alinhada e ancoragem de preço — julho de 2026
+
+- “Contato encontrado ainda não é oportunidade.” passou a ocupar exatamente
+  duas linhas centralizadas no desktop e no mobile.
+- As três objeções agora aparecem no mesmo eixo abaixo do título; o texto de
+  apoio e a mensagem “uma boa decisão é o processo” também foram centralizados.
+- O percurso Base → Encontrar → Validar → Analisar → Processo responde ao scroll
+  em uma seção sticky de 300 svh, com linha e marcador sincronizados.
+- A chegada em Processo ativa o último estágio e dispara 12 partículas amarelas,
+  respeitando `prefers-reduced-motion`.
+- Os dois prints reais de autoridade usam o mesmo quadro 16:9. Em 1906 × 860,
+  ambos medem 620 × 348,75 px e as legendas 01/02 começam na mesma coordenada.
+- A seção de transparência ganhou hierarquia 01 “O limite” → 02 “O caminho”,
+  com direção visual explícita entre os textos.
+- A oferta passou a mostrar “De R$ 119,89” riscado e “por R$ 59,89” em maior
+  escala; o preço atual permanece em uma única linha no desktop e no mobile.
+- Desktop validado em 1906 × 860 e mobile em 390 × 844, sem overflow horizontal
+  e sem mensagens no console.
+- Evidências:
+  `docs/redesign-qa/37-problem-sequence-after.png`,
+  `docs/redesign-qa/38-base-process-mid-after.png`,
+  `docs/redesign-qa/39-base-process-complete-after.png`,
+  `docs/redesign-qa/40-authority-after.png`,
+  `docs/redesign-qa/41-transparency-after.png`,
+  `docs/redesign-qa/42-offer-after.png`,
+  `docs/redesign-qa/43-problem-mobile-after.png` e
+  `docs/redesign-qa/44-offer-mobile-after.png`.
+
+Resultado: aprovado, sem incompatibilidades visuais P0, P1 ou P2.
+
+## Hero centralizado e títulos em duas linhas — julho de 2026
+
+- O robô 3D e o carregamento da cena Spline foram removidos do hero.
+- O H1 passou a ocupar o centro da composição em duas linhas explícitas:
+  “Pare de procurar” e “fornecedores no escuro.”.
+- Descrição, CTAs e fatos de confiança foram centralizados no mesmo eixo.
+- Todos os títulos que usam composição central receberam duas linhas explícitas,
+  sem quebras automáticas ou palavras isoladas.
+- Os CTAs do sistema agora sempre renderizam a seta; no botão amarelo, o ícone
+  usa contraste azul-escuro e permanece visível antes do hover.
+- Desktop validado em 1920 × 930: hero com 852 px, faixa de processo totalmente
+  visível, zero elementos do robô e zero overflow horizontal.
+- Mobile validado em 390 × 844: H1 e títulos centralizados em duas linhas,
+  setas visíveis e zero overflow horizontal.
+- Auditoria no DOM confirmou oito títulos centrais com exatamente dois blocos
+  de linha e alinhamento central.
+- Evidências:
+  `docs/redesign-qa/29-hero-before-centered.png`,
+  `docs/redesign-qa/30-hero-centered-final.png` e
+  `docs/redesign-qa/31-hero-centered-mobile.png`.
+
+Resultado: aprovado, sem incompatibilidades visuais P0, P1 ou P2.
+
 ## FAQ, público e retenção visual — julho de 2026
 
 - O título do FAQ passou a ser “Antes de decidir, deixe tudo claro.” e ocupa

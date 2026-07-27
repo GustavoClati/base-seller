@@ -100,10 +100,13 @@ export function MethodScrollytelling() {
     <section className="section method" id="metodo">
       <div className="container">
         <div className="method__heading">
-          <h2>
-            Encontre. Valide. Analise.
-            <br />{" "}
-            <strong className="heading-accent">E só então teste.</strong>
+          <h2 className="centered-title">
+            <span className="centered-title__line">
+              Encontre. Valide. Analise.
+            </span>
+            <strong className="centered-title__line heading-accent">
+              E só então teste.
+            </strong>
           </h2>
           <p>
             Quatro etapas para que a decisão não comece e termine no preço do

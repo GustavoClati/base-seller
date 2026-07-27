@@ -56,11 +56,11 @@ export function AudienceSection() {
     <section className="section audience" id="para-quem-e">
       <div className="container">
         <Reveal>
-          <h2>
-            <span className="audience__title-line">
+          <h2 className="centered-title">
+            <span className="centered-title__line audience__title-line">
               Critério antes do estoque.
             </span>
-            <strong className="audience__title-line heading-accent">
+            <strong className="centered-title__line audience__title-line heading-accent">
               Método antes da aposta.
             </strong>
           </h2>

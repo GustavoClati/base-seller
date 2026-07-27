@@ -1,5 +1,6 @@
 "use client";
 
+import { Sparkles } from "lucide-react";
 import {
   motion,
   useReducedMotion,
@@ -62,26 +63,18 @@ export function ProblemSequence() {
       <div className="container problem-sequence__sticky">
         <div className="problem-sequence__intro">
           <h2>
-            Contato encontrado
-            <br />
-            {" "}
+            <span>Contato encontrado</span>
             <strong className="heading-accent">
-              ainda não <span className="title-keep">é oportunidade.</span>
+              ainda não é oportunidade.
             </strong>
           </h2>
-          <p>
-            Um preço pode parecer baixo até o frete entrar na conta. Uma margem
-            pode parecer boa até aparecerem tarifas, impostos e concorrência. E
-            um catálogo cheio não significa que existe um produto bom para
-            começar.
-          </p>
         </div>
 
         <div className="problem-sequence__statements">
           <motion.div
             aria-hidden="true"
             className="problem-sequence__progress"
-            style={{ scaleY: reduceMotion ? 1 : lineScale }}
+            style={{ scaleX: reduceMotion ? 1 : lineScale }}
           />
           <motion.p
             className="problem-sequence__statement problem-sequence__statement--one"
@@ -112,8 +105,23 @@ export function ProblemSequence() {
           </motion.p>
         </div>
 
+        <p className="problem-sequence__supporting">
+          Um preço pode parecer baixo até o frete entrar na conta. Uma margem
+          pode parecer boa até aparecerem tarifas, impostos e concorrência. E
+          um catálogo cheio não significa que existe um produto bom para
+          começar.
+        </p>
+
         <p className="problem-sequence__closing">
-          O que separa um fornecedor de uma boa decisão é o processo.
+          <Sparkles aria-hidden="true" size={18} strokeWidth={1.8} />
+          <span className="problem-sequence__closing-copy">
+            O que separa um fornecedor de{" "}
+            <strong>uma boa decisão</strong> é{" "}
+            <span className="problem-sequence__closing-emphasis">
+              o processo.
+            </span>
+          </span>
+          <Sparkles aria-hidden="true" size={18} strokeWidth={1.8} />
         </p>
       </div>
     </section>

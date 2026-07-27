@@ -11,10 +11,9 @@ export function AuthoritySection() {
       <div className="container">
         <div className="authority__intro">
           <Reveal>
-            <h2>
-              Essa base nasceu
-              <br />{" "}
-              <strong className="heading-accent">
+            <h2 className="centered-title">
+              <span className="centered-title__line">Essa base nasceu</span>
+              <strong className="centered-title__line heading-accent">
                 dentro da operação.
               </strong>
             </h2>
@@ -42,7 +41,7 @@ export function AuthoritySection() {
                 alt="Captura real do painel da operação com vendas, unidades e visitas"
                 assetSrc={media.salesDashboard}
                 assetType="image"
-                aspectRatio="1106 / 284"
+                aspectRatio="16 / 9"
                 className="authority-proof__image"
                 id="print-painel-vendas"
                 label="Adicionar print real do painel"
@@ -64,7 +63,7 @@ export function AuthoritySection() {
                 alt="Captura real do painel de vendas do dia no Mercado Livre"
                 assetSrc={media.ordersProof}
                 assetType="image"
-                aspectRatio="1185 / 768"
+                aspectRatio="16 / 9"
                 className="authority-proof__image"
                 id="print-vendas-ao-vivo"
                 label="Adicionar print real de vendas"

@@ -12,9 +12,10 @@ export function DeliverablesSection() {
             description="Você recebe o necessário para pesquisar, analisar e agir — sem dezenas de horas de conteúdo ou bônus criados apenas para aumentar volume."
             title={
               <>
-                Conteúdo para agir.
-                <br />{" "}
-                <strong className="heading-accent">
+                <span className="centered-title__line">
+                  Conteúdo para agir.
+                </span>
+                <strong className="centered-title__line heading-accent">
                   Não para acumular.
                 </strong>
               </>

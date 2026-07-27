@@ -12,7 +12,6 @@ type TrackedCtaProps = {
   location: CtaLocation;
   variant?: "primary" | "secondary" | "compact";
   className?: string;
-  showArrow?: boolean;
 };
 
 export function TrackedCta({
@@ -21,7 +20,6 @@ export function TrackedCta({
   location,
   variant = "primary",
   className = "",
-  showArrow = true,
 }: TrackedCtaProps) {
   function handleClick() {
     trackEvent("cta_click", { location, label: String(children) });
@@ -38,9 +36,7 @@ export function TrackedCta({
       onClick={handleClick}
     >
       <span>{children}</span>
-      {showArrow ? (
-        <ArrowUpRight aria-hidden="true" className="button__icon" size={18} />
-      ) : null}
+      <ArrowUpRight aria-hidden="true" className="button__icon" size={18} />
     </a>
   );
 }

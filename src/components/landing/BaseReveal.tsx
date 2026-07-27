@@ -13,9 +13,10 @@ export function BaseReveal() {
             className="base-reveal__heading"
             title={
               <>
-                Comece com uma base.
-                <br />{" "}
-                <strong className="heading-accent">
+                <span className="centered-title__line">
+                  Comece com uma base.
+                </span>
+                <strong className="centered-title__line heading-accent">
                   Avance com <span className="title-keep">mais critério.</span>
                 </strong>
               </>
