@@ -23,14 +23,14 @@ const canonical = siteConfig.siteUrl || undefined;
 
 export const metadata: Metadata = {
   metadataBase: canonical ? new URL(canonical) : undefined,
-  title: "Base do Seller — Fornecedores e análise para marketplaces",
+  title: "Base do Seller — Lista de Fornecedores 2026 em PDF",
   description:
-    "Acesse fornecedores usados em uma operação real de e-commerce e aprenda a encontrar, validar e analisar produtos antes de investir em estoque.",
+    "Acesse 168 registros de fornecedores organizados em PDF, com contatos, catálogos, sites e perfis pesquisados.",
   alternates: canonical ? { canonical } : undefined,
   openGraph: {
-    title: "Base do Seller — Fornecedores e análise para marketplaces",
+    title: "Base do Seller — Lista de Fornecedores 2026 em PDF",
     description:
-      "Acesse fornecedores usados em uma operação real de e-commerce e aprenda a encontrar, validar e analisar produtos antes de investir em estoque.",
+      "Acesse 168 registros de fornecedores organizados em PDF, com contatos, catálogos, sites e perfis pesquisados.",
     type: "website",
     url: canonical,
     images: siteConfig.media.ogImage
