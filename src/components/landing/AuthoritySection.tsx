@@ -41,7 +41,7 @@ export function AuthoritySection() {
                 alt="Captura real do painel da operação com vendas, unidades e visitas"
                 assetSrc={media.salesDashboard}
                 assetType="image"
-                aspectRatio="1105 / 284"
+                aspectRatio="1104 / 668"
                 className="authority-proof__image"
                 id="print-painel-vendas"
                 label="Adicionar print real do painel"
