@@ -34,7 +34,7 @@ As variáveis ficam em `.env.local`. Não publique esse arquivo.
 ### Definir o checkout
 
 ```env
-NEXT_PUBLIC_CAKTO_CHECKOUT_URL=https://...
+NEXT_PUBLIC_KIWIFY_CHECKOUT_URL=https://...
 ```
 
 Todos os CTAs leem essa configuração. Em `preview`, os CTAs levam à seção da oferta e não iniciam checkout.
@@ -125,7 +125,7 @@ Preencha:
 
 ```env
 NEXT_PUBLIC_SITE_MODE=live
-NEXT_PUBLIC_CAKTO_CHECKOUT_URL=
+NEXT_PUBLIC_KIWIFY_CHECKOUT_URL=
 NEXT_PUBLIC_SUPPORT_EMAIL=
 NEXT_PUBLIC_SITE_URL=https://seudominio.com.br
 NEXT_PUBLIC_OFFER_PRICE=

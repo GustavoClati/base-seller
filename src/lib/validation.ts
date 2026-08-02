@@ -25,7 +25,7 @@ export function validateSiteConfiguration(
   const missing: string[] = [];
 
   if (!hasValidUrl(config.checkoutUrl)) {
-    missing.push("NEXT_PUBLIC_CAKTO_CHECKOUT_URL (URL válida)");
+    missing.push("NEXT_PUBLIC_KIWIFY_CHECKOUT_URL (URL válida)");
   }
 
   if (!config.offer.price) {

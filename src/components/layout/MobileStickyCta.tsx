@@ -54,7 +54,7 @@ export function MobileStickyCta() {
             location="mobile_sticky"
             variant="primary"
           >
-            Quero acessar
+            Quero receber o PDF
           </TrackedCta>
         </motion.div>
       ) : null}

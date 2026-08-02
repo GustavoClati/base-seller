@@ -28,12 +28,17 @@ const siteMode: SiteMode =
 
 export const siteContent = {
   brandName: "Base do Seller",
-  supplierCount: 18,
+  supplierCount: 168,
+  contactCount: 127,
+  catalogCount: 147,
+  researchedChannelCount: 166,
+  pdfPageCount: 31,
+  researchDate: "agosto de 2026",
   authorName: "Gustavo",
 
   siteMode,
 
-  checkoutUrl: process.env.NEXT_PUBLIC_CAKTO_CHECKOUT_URL?.trim() ?? "",
+  checkoutUrl: process.env.NEXT_PUBLIC_KIWIFY_CHECKOUT_URL?.trim() ?? "",
   memberAreaUrl: process.env.NEXT_PUBLIC_MEMBER_AREA_URL?.trim() ?? "",
   supportEmail: process.env.NEXT_PUBLIC_SUPPORT_EMAIL?.trim() ?? "",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "") ?? "",
@@ -44,7 +49,7 @@ export const siteContent = {
     installments: process.env.NEXT_PUBLIC_OFFER_INSTALLMENTS?.trim() ?? "",
     paymentNote:
       process.env.NEXT_PUBLIC_OFFER_PAYMENT_NOTE?.trim() ||
-      "Pagamento processado pela Cakto.",
+      "Pagamento processado pela Kiwify.",
     accessNote: process.env.NEXT_PUBLIC_OFFER_ACCESS_NOTE?.trim() ?? "",
     accessFaqAnswer:
       process.env.NEXT_PUBLIC_OFFER_ACCESS_FAQ_ANSWER?.trim() ?? "",
@@ -80,10 +85,20 @@ export const siteContent = {
 } as const;
 
 export const navigationItems = [
-  { label: "Como funciona", href: "#como-funciona" },
-  { label: "O que você recebe", href: "#o-que-voce-recebe" },
-  { label: "Para quem é", href: "#para-quem-e" },
+  { label: "O que vem no PDF", href: "#o-que-vem-no-pdf" },
+  { label: "Categorias", href: "#categorias" },
   { label: "Dúvidas", href: "#duvidas" },
+] as const;
+
+export const supplierCategories = [
+  { label: "Utilidades domésticas", count: 40 },
+  { label: "Eletrônicos", count: 34 },
+  { label: "Pets", count: 24 },
+  { label: "Moda e maquiagem", count: 20 },
+  { label: "Base do Seller", count: 18 },
+  { label: "Ferramentas", count: 17 },
+  { label: "Brinquedos", count: 13 },
+  { label: "Diversos", count: 2 },
 ] as const;
 
 export const problemStatements = [
@@ -122,27 +137,27 @@ export const methodSteps = [
 export const deliverables = [
   {
     number: "01",
-    title: "Treinamento direto ao ponto",
+    title: "PDF com 31 páginas",
     description:
-      "Aulas práticas sobre pesquisa de fornecedores, solicitação de catálogo, seleção de produtos, análise e primeiro teste.",
+      "Um arquivo organizado para consultar fornecedores por segmento.",
   },
   {
     number: "02",
-    title: "Base de fornecedores em Excel",
+    title: "168 registros organizados",
     description:
-      "Nome, categoria, WhatsApp, Instagram, site e links completos dos fornecedores utilizados na operação do autor.",
+      "Nomes, contatos, catálogos, sites e perfis reunidos em um único lugar.",
   },
   {
     number: "03",
-    title: "Análise prática de produto",
+    title: "8 grupos de fornecedores",
     description:
-      "Demonstração do processo de análise considerando custo, frete, tarifas, imposto, preço e concorrência.",
+      "Pets, moda e maquiagem, casa, ferramentas, eletrônicos, brinquedos, diversos e registros complementares.",
   },
   {
     number: "04",
-    title: "Acesso organizado",
+    title: "Links para consulta",
     description:
-      "Conteúdo disponibilizado pela área de membros, em uma sequência pensada para levar da pesquisa até o uso da base.",
+      "127 registros com contato, 147 com catálogo e 166 com site ou Instagram pesquisado.",
   },
 ] as const;
 
@@ -178,9 +193,9 @@ export const audience = {
 
 export const objectionBreakers = [
   {
-    question: "E se eu ainda não souber analisar um produto?",
+    question: "E se eu ainda não souber qual segmento escolher?",
     answer:
-      "As aulas mostram o processo de análise antes do primeiro teste, considerando custo, frete, tarifas, imposto, preço e concorrência.",
+      "O PDF separa os registros em oito grupos para facilitar a consulta por categoria.",
   },
   {
     question: "E se os fornecedores mudarem as condições?",
@@ -188,9 +203,9 @@ export const objectionBreakers = [
       "Você aprende a confirmar catálogo, estoque, pedido mínimo, envio, nota fiscal e condições comerciais diretamente antes de comprar.",
   },
   {
-    question: "18 fornecedores não é pouco?",
-    answer:
-      "A proposta não é entregar centenas de contatos desconhecidos. É começar com uma base menor, usada na operação, e aprender um processo para encontrar outros.",
+      question: "168 registros são todos iguais?",
+      answer:
+      "Não. A lista reúne fornecedores de diferentes segmentos e informa os canais que foram localizados para cada registro.",
   },
   {
     question: "E se eu estiver começando agora?",
@@ -200,11 +215,11 @@ export const objectionBreakers = [
 ] as const;
 
 export const offerItems = [
-  "Treinamento Base do Seller",
-  "Base em Excel com {supplierCount} fornecedores da edição atual",
-  "Aulas para encontrar e validar novos fornecedores",
-  "Demonstração prática de análise",
-  "Acesso pela área de membros",
+  "Base de Fornecedores 2026 em PDF",
+  "{supplierCount} registros organizados",
+  "8 grupos de fornecedores",
+  "Contatos, catálogos, sites e perfis pesquisados",
+  "31 páginas para consulta",
 ] as const;
 
 export type FaqItem = {
@@ -213,26 +228,27 @@ export type FaqItem = {
 };
 
 export function getFaqItems(): FaqItem[] {
-  const { supplierCount, authorName, offer } = siteContent;
+  const { supplierCount, offer, researchDate } = siteContent;
 
   return [
     {
       question: "O que exatamente eu vou receber?",
+      answer: `Você receberá a Base de Fornecedores 2026 em PDF, com ${supplierCount} registros organizados por segmento e links de contato, catálogo, site ou Instagram quando localizados. Não há aulas ou treinamento incluídos.`,
+    },
+    {
+      question: "Quando recebo o PDF?",
       answer:
-        "Você receberá acesso ao treinamento Base do Seller e ao arquivo Excel com os fornecedores organizados por nome, categoria, WhatsApp, Instagram, site e links completos.",
+        offer.accessFaqAnswer ||
+        "O acesso ao PDF é enviado após a confirmação do pagamento, conforme as instruções exibidas pela Kiwify no checkout.",
     },
     {
-      question: "Quantos fornecedores existem na edição atual?",
-      answer: `A edição atual reúne ${supplierCount} fornecedores que fizeram parte da operação do autor. O objetivo não é entregar centenas de contatos desconhecidos, mas uma base menor acompanhada de um processo para encontrar outros por conta própria.`,
+      question: "Os fornecedores estão ativos?",
+      answer: `Os canais foram pesquisados em ${researchDate}, mas a internet e as condições comerciais mudam. Confirme CNPJ, estoque, preço, pedido mínimo, nota fiscal, prazo e dados de pagamento diretamente com cada empresa antes de comprar.`,
     },
     {
-      question: "Todos os fornecedores entregam e emitem nota fiscal?",
-      answer: `Na experiência do ${authorName} com os fornecedores desta edição, sim. Como políticas e condições podem mudar, confirme entrega, nota fiscal, pedido mínimo, prazo e demais informações diretamente antes de realizar um pedido.`,
-    },
-    {
-      question: "Todos os produtos dão margem?",
+      question: "O PDF garante margem ou resultado?",
       answer:
-        "Não. A margem depende do produto, frete, tarifas, impostos, publicidade, preço praticado e concorrência. O treinamento ensina justamente como analisar antes de investir.",
+        "Não. O arquivo é um ponto de partida para a sua pesquisa. Margem e resultado dependem do produto, custo, frete, impostos, comissões, demanda, concorrência e da sua própria validação comercial.",
     },
     {
       question: "Preciso ter CNPJ?",
@@ -240,30 +256,24 @@ export function getFaqItems(): FaqItem[] {
         "As condições variam de fornecedor para fornecedor. Alguns podem vender para pessoa física e outros podem exigir CNPJ. Confirme essa informação diretamente com a empresa.",
     },
     {
-      question: "A ferramenta de análise está incluída?",
+      question: "Os catálogos e contatos são clicáveis?",
       answer:
-        "Não. Uma ferramenta externa poderá ser demonstrada durante as aulas. Eventuais planos, assinaturas e condições pertencem à empresa responsável pela ferramenta.",
+        "O PDF reúne 127 registros com contato clicável e 147 com catálogo clicável. Quando um canal não foi localizado com segurança, isso é informado no próprio arquivo.",
     },
     {
       question: "É uma plataforma de dropshipping?",
       answer:
-        "Não. A Base do Seller é um treinamento acompanhado de uma base de contatos. Ela não publica anúncios, sincroniza estoque ou realiza envio automático ao consumidor.",
+        "Não. A Base do Seller é um arquivo PDF com uma lista de fornecedores. Ela não publica anúncios, sincroniza estoque nem realiza envios automáticos.",
     },
     {
-      question: "Quando recebo acesso às aulas e à planilha?",
-      answer:
-        offer.accessFaqAnswer ||
-        "Resposta pendente de configuração antes da publicação.",
-    },
-    {
-      question: "Posso compartilhar ou revender a planilha?",
+      question: "Posso compartilhar ou revender o arquivo?",
       answer:
         "Não. O acesso e os materiais são destinados ao uso individual do comprador. A redistribuição, publicação ou revenda não é permitida.",
     },
     {
       question: "A Base do Seller tem vínculo com o Mercado Livre?",
       answer:
-        "Não. A Base do Seller é um produto educacional independente e não possui vínculo, patrocínio ou afiliação oficial com o Mercado Livre.",
+        "Não. A Base do Seller é um produto digital independente e não possui vínculo, patrocínio ou afiliação oficial com o Mercado Livre.",
     },
   ];
 }
