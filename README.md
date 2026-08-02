@@ -34,10 +34,10 @@ As variáveis ficam em `.env.local`. Não publique esse arquivo.
 ### Definir o checkout
 
 ```env
-NEXT_PUBLIC_KIWIFY_CHECKOUT_URL=https://...
+NEXT_PUBLIC_KIWIFY_CHECKOUT_URL=https://pay.kiwify.com.br/FpCSKye
 ```
 
-Todos os CTAs leem essa configuração. Em `preview`, os CTAs levam à seção da oferta e não iniciam checkout.
+Todos os CTAs leem essa configuração e levam diretamente ao checkout, inclusive em `preview`. O modo `preview` continua impedindo a indexação do site até a ativação completa.
 
 ### Configurar preço e acesso
 

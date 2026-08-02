@@ -7,9 +7,7 @@ validateSiteConfiguration(siteContent, legalContent);
 export const siteConfig = siteContent;
 
 export function getCheckoutHref() {
-  return siteConfig.siteMode === "live" && siteConfig.checkoutUrl
-    ? siteConfig.checkoutUrl
-    : "#oferta";
+  return siteConfig.checkoutUrl || "#oferta";
 }
 
 export function isLiveSite() {

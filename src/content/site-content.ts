@@ -26,6 +26,8 @@ export type Testimonial = {
 const siteMode: SiteMode =
   process.env.NEXT_PUBLIC_SITE_MODE === "live" ? "live" : "preview";
 
+const defaultCheckoutUrl = "https://pay.kiwify.com.br/FpCSKye";
+
 export const siteContent = {
   brandName: "Base do Seller",
   supplierCount: 168,
@@ -38,7 +40,8 @@ export const siteContent = {
 
   siteMode,
 
-  checkoutUrl: process.env.NEXT_PUBLIC_KIWIFY_CHECKOUT_URL?.trim() ?? "",
+  checkoutUrl:
+    process.env.NEXT_PUBLIC_KIWIFY_CHECKOUT_URL?.trim() || defaultCheckoutUrl,
   memberAreaUrl: process.env.NEXT_PUBLIC_MEMBER_AREA_URL?.trim() ?? "",
   supportEmail: process.env.NEXT_PUBLIC_SUPPORT_EMAIL?.trim() ?? "",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "") ?? "",
