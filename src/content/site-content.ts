@@ -26,7 +26,7 @@ export type Testimonial = {
 const siteMode: SiteMode =
   process.env.NEXT_PUBLIC_SITE_MODE === "live" ? "live" : "preview";
 
-const defaultCheckoutUrl = "https://pay.kiwify.com.br/FpCSKye";
+const defaultCheckoutUrl = "https://pay.cakto.com.br/32jdpov_1058392";
 
 export const siteContent = {
   brandName: "Base do Seller",
@@ -52,7 +52,7 @@ export const siteContent = {
     installments: process.env.NEXT_PUBLIC_OFFER_INSTALLMENTS?.trim() ?? "",
     paymentNote:
       process.env.NEXT_PUBLIC_OFFER_PAYMENT_NOTE?.trim() ||
-      "Pagamento processado pela Kiwify.",
+      "Pagamento processado pela Cakto.",
     accessNote: process.env.NEXT_PUBLIC_OFFER_ACCESS_NOTE?.trim() ?? "",
     accessFaqAnswer:
       process.env.NEXT_PUBLIC_OFFER_ACCESS_FAQ_ANSWER?.trim() ?? "",
@@ -223,6 +223,7 @@ export const offerItems = [
   "8 grupos de fornecedores",
   "Contatos, catálogos, sites e perfis pesquisados",
   "31 páginas para consulta",
+  "Grupo VIP no WhatsApp para networking",
 ] as const;
 
 export type FaqItem = {
@@ -236,13 +237,13 @@ export function getFaqItems(): FaqItem[] {
   return [
     {
       question: "O que exatamente eu vou receber?",
-      answer: `Você receberá a Base de Fornecedores 2026 em PDF, com ${supplierCount} registros organizados por segmento e links de contato, catálogo, site ou Instagram quando localizados. Não há aulas ou treinamento incluídos.`,
+      answer: `Você receberá a Base de Fornecedores 2026 em PDF, com ${supplierCount} registros organizados por segmento e links de contato, catálogo, site ou Instagram quando localizados. Também terá acesso ao nosso grupo VIP no WhatsApp para networking. Não há aulas ou treinamento incluídos.`,
     },
     {
       question: "Quando recebo o PDF?",
       answer:
         offer.accessFaqAnswer ||
-        "O acesso ao PDF é enviado após a confirmação do pagamento, conforme as instruções exibidas pela Kiwify no checkout.",
+        "O acesso ao PDF é enviado após a confirmação do pagamento, conforme as instruções exibidas pela Cakto no checkout.",
     },
     {
       question: "Os fornecedores estão ativos?",

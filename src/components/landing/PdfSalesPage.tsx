@@ -3,6 +3,7 @@ import {
   Check,
   FileText,
   LockKeyhole,
+  MessageCircle,
   ShieldCheck,
 } from "lucide-react";
 import Image from "next/image";
@@ -220,6 +221,13 @@ export function PdfSalesPage() {
                         {siteConfig.researchedChannelCount} registros com site ou
                         Instagram pesquisado.
                       </span>
+                    </div>
+                  </li>
+                  <li>
+                    <MessageCircle aria-hidden="true" />
+                    <div>
+                      <strong>Grupo VIP no WhatsApp</strong>
+                      <span>Faça networking com outros sellers.</span>
                     </div>
                   </li>
                   <li className="pdf-content-list__note">
