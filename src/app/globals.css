@@ -308,7 +308,7 @@
   line-height: 1;
 }
 
-.pdf-proof-rail__item span {
+.pdf-proof-rail__item > span {
   margin-top: 0.55rem;
   color: #e7edf3;
   font-size: 0.77rem;
@@ -968,7 +968,7 @@
     font-size: 2.5rem;
   }
 
-  .pdf-proof-rail__item span {
+  .pdf-proof-rail__item > span {
     font-size: 0.64rem;
   }
 
