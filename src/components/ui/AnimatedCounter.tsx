@@ -1,13 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
-  motion,
   useInView,
   useMotionValue,
   useReducedMotion,
   useSpring,
-  useTransform,
 } from "motion/react";
 
 type AnimatedCounterProps = {
@@ -18,7 +16,8 @@ type AnimatedCounterProps = {
 export function AnimatedCounter({ value, className }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const reduceMotion = useReducedMotion();
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const isInView = useInView(ref, { once: true, amount: 0.4 });
+  const [display, setDisplay] = useState(0);
 
   const motionValue = useMotionValue(0);
   const spring = useSpring(motionValue, {
@@ -26,7 +25,13 @@ export function AnimatedCounter({ value, className }: AnimatedCounterProps) {
     damping: 28,
     mass: 1,
   });
-  const display = useTransform(spring, (v) => Math.round(v));
+
+  useEffect(() => {
+    const unsubscribe = spring.on("change", (v) => {
+      setDisplay(Math.round(v));
+    });
+    return unsubscribe;
+  }, [spring]);
 
   useEffect(() => {
     if (isInView) {
@@ -43,8 +48,8 @@ export function AnimatedCounter({ value, className }: AnimatedCounterProps) {
   }
 
   return (
-    <motion.span ref={ref} className={className}>
+    <span ref={ref} className={className}>
       {display}
-    </motion.span>
+    </span>
   );
 }
