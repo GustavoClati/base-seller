@@ -104,6 +104,33 @@
     var(--pdf-bg);
 }
 
+/* ── Hero entrance stagger ── */
+
+@keyframes pdf-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pdf-hero__copy > *,
+.pdf-hero__visual,
+.pdf-hero .pdf-proof-rail {
+  opacity: 0;
+  animation: pdf-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.pdf-hero__copy > *:nth-child(1) { animation-delay: 0s; }
+.pdf-hero__copy > *:nth-child(2) { animation-delay: 0.1s; }
+.pdf-hero__copy > *:nth-child(3) { animation-delay: 0.2s; }
+.pdf-hero__copy > *:nth-child(4) { animation-delay: 0.25s; }
+.pdf-hero__visual { animation-delay: 0.3s; }
+.pdf-hero .pdf-proof-rail { animation-delay: 0.4s; }
+
 .pdf-hero::after {
   position: absolute;
   z-index: 0;
@@ -4863,6 +4890,121 @@ button {
   }
 }
 
+/* ── Pulse glow on main CTAs ── */
+
+@keyframes pdf-pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 18px 45px rgba(255, 196, 0, 0.15);
+  }
+  50% {
+    box-shadow: 0 18px 55px rgba(255, 196, 0, 0.32),
+      0 0 24px rgba(255, 196, 0, 0.12);
+  }
+}
+
+.pdf-hero__cta.button,
+.pdf-offer__cta.button {
+  animation: pdf-pulse-glow 3s ease-in-out infinite;
+}
+
+.pdf-hero__cta.button:hover,
+.pdf-offer__cta.button:hover {
+  animation-play-state: paused;
+  box-shadow: 0 22px 55px rgba(255, 196, 0, 0.38);
+}
+
+/* ── Category row hover ── */
+
+.pdf-category-list__row {
+  transition: background 200ms ease, transform 200ms ease;
+  border-radius: 0.35rem;
+}
+
+.pdf-category-list__row:hover {
+  background: rgba(255, 196, 0, 0.04);
+  transform: translateX(4px);
+}
+
+.pdf-category-list__row:hover > strong {
+  color: var(--pdf-yellow);
+}
+
+.pdf-category-list__row > strong {
+  transition: color 200ms ease;
+}
+
+/* ── Validation step hover ── */
+
+.pdf-validation__steps li {
+  transition: background 200ms ease;
+  border-radius: 0.5rem;
+}
+
+.pdf-validation__steps li:hover {
+  background: rgba(255, 196, 0, 0.04);
+}
+
+.pdf-validation__steps li > span {
+  transition: transform 200ms ease;
+}
+
+.pdf-validation__steps li:hover > span {
+  transform: scale(1.08);
+}
+
+/* ── Offer checklist hover ── */
+
+.pdf-offer__copy > ul li {
+  transition: transform 180ms ease, color 180ms ease;
+  border-radius: 0.25rem;
+}
+
+.pdf-offer__copy > ul li:hover {
+  transform: translateX(4px);
+  color: #fff;
+}
+
+/* ── ProductStack hover parallax ── */
+
+.pdf-product-stack > div {
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pdf-product-stack:hover .pdf-product-stack__cover {
+  transform: rotate(-6deg) rotateY(4deg) translate(-4px, -6px);
+}
+
+.pdf-product-stack:hover .pdf-product-stack__sample {
+  transform: rotate(5deg) translateZ(-30px) translate(5px, 4px);
+}
+
+.pdf-product-stack:hover .pdf-product-stack__index {
+  transform: rotate(7deg) translate(3px, -3px);
+}
+
+.pdf-product-stack.is-compact > div {
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pdf-product-stack.is-compact:hover .pdf-product-stack__cover {
+  transform: rotate(-6deg) rotateY(4deg) translate(-3px, -4px);
+}
+
+.pdf-product-stack.is-compact:hover .pdf-product-stack__sample {
+  transform: rotate(5deg) translateZ(-30px) translate(4px, 3px);
+}
+
+/* ── FAQ item hover ── */
+
+.pdf-faq .accordion__trigger {
+  transition: padding-left 200ms ease;
+}
+
+.pdf-faq .accordion__trigger:hover {
+  padding-left: 0.5rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -4942,5 +5084,28 @@ button {
   .faq__heading {
     position: relative;
     top: auto;
+  }
+
+  .pdf-hero__cta.button,
+  .pdf-offer__cta.button {
+    animation: none;
+  }
+
+  .pdf-product-stack > div,
+  .pdf-product-stack.is-compact > div {
+    transition: none;
+  }
+
+  .pdf-category-list__row,
+  .pdf-validation__steps li,
+  .pdf-offer__copy > ul li {
+    transition: none;
+  }
+
+  .pdf-hero__copy > *,
+  .pdf-hero__visual,
+  .pdf-hero .pdf-proof-rail {
+    opacity: 1;
+    animation: none;
   }
 }

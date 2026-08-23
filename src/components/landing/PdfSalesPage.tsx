@@ -16,7 +16,10 @@ import {
 } from "@/content/site-content";
 import { getCheckoutHref, siteConfig } from "@/lib/site-config";
 import { Accordion } from "@/components/ui/Accordion";
+import { AnimatedBar } from "@/components/ui/AnimatedBar";
+import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { BrandWordmark } from "@/components/ui/BrandWordmark";
+import { Reveal } from "@/components/ui/Reveal";
 import { TrackedCta } from "@/components/ui/TrackedCta";
 
 const proofStats = [
@@ -114,6 +117,7 @@ export function PdfSalesPage() {
       </header>
 
       <main id="conteudo-principal">
+        {/* ── Hero — CSS keyframe stagger (above the fold, no Reveal needed) ── */}
         <section className="pdf-hero" id="hero">
           <div className="pdf-container pdf-hero__grid">
             <div className="pdf-hero__copy">
@@ -146,203 +150,237 @@ export function PdfSalesPage() {
           <div className="pdf-container pdf-proof-rail" aria-label="Números da base">
             {proofStats.map((stat) => (
               <div className="pdf-proof-rail__item" key={stat.label}>
-                <strong>{stat.value}</strong>
+                <strong><AnimatedCounter value={stat.value} /></strong>
                 <span>{stat.label}</span>
               </div>
             ))}
           </div>
         </section>
 
+        {/* ── O que vem no PDF ── */}
         <section className="pdf-content-section" id="o-que-vem-no-pdf">
           <div className="pdf-container">
-            <div className="pdf-section-heading">
-              <h2>
-                Uma base pronta para abrir <strong>caminhos.</strong>
-              </h2>
-              <p>
-                Em vez de começar com dezenas de abas abertas, você recebe os
-                registros organizados em um único PDF.
-              </p>
-            </div>
+            <Reveal>
+              <div className="pdf-section-heading">
+                <h2>
+                  Uma base pronta para abrir <strong>caminhos.</strong>
+                </h2>
+                <p>
+                  Em vez de começar com dezenas de abas abertas, você recebe os
+                  registros organizados em um único PDF.
+                </p>
+              </div>
+            </Reveal>
 
             <div className="pdf-content-section__grid">
-              <div className="pdf-viewer">
-                <div className="pdf-viewer__bar">
-                  <span />
-                  <span>Base do Seller - Lista de Fornecedores.pdf</span>
-                  <b>{siteConfig.pdfPageCount} páginas</b>
+              <Reveal delay={0.1}>
+                <div className="pdf-viewer">
+                  <div className="pdf-viewer__bar">
+                    <span />
+                    <span>Base do Seller - Lista de Fornecedores.pdf</span>
+                    <b>{siteConfig.pdfPageCount} páginas</b>
+                  </div>
+                  <Image
+                    alt="Amostra de uma página do PDF com fornecedores, contatos, sites, Instagram e catálogos"
+                    height={910}
+                    src="/images/pdf-sample-table.webp"
+                    width={1287}
+                  />
                 </div>
-                <Image
-                  alt="Amostra de uma página do PDF com fornecedores, contatos, sites, Instagram e catálogos"
-                  height={910}
-                  src="/images/pdf-sample-table.webp"
-                  width={1287}
-                />
-              </div>
+              </Reveal>
 
-              <ul className="pdf-content-list">
-                <li>
-                  <FileText aria-hidden="true" />
-                  <div>
-                    <strong>{siteConfig.pdfPageCount} páginas organizadas</strong>
-                    <span>Conteúdo separado por segmento.</span>
-                  </div>
-                </li>
-                <li>
-                  <FileText aria-hidden="true" />
-                  <div>
-                    <strong>Contatos clicáveis</strong>
-                    <span>{siteConfig.contactCount} registros com contato.</span>
-                  </div>
-                </li>
-                <li>
-                  <FileText aria-hidden="true" />
-                  <div>
-                    <strong>Catálogos clicáveis</strong>
-                    <span>{siteConfig.catalogCount} registros com catálogo.</span>
-                  </div>
-                </li>
-                <li>
-                  <FileText aria-hidden="true" />
-                  <div>
-                    <strong>Sites e perfis pesquisados</strong>
-                    <span>
-                      {siteConfig.researchedChannelCount} registros com site ou
-                      Instagram pesquisado.
-                    </span>
-                  </div>
-                </li>
-                <li className="pdf-content-list__note">
-                  Pesquisa digital concluída em {siteConfig.researchDate}.
-                </li>
-              </ul>
+              <Reveal delay={0.25}>
+                <ul className="pdf-content-list">
+                  <li>
+                    <FileText aria-hidden="true" />
+                    <div>
+                      <strong>{siteConfig.pdfPageCount} páginas organizadas</strong>
+                      <span>Conteúdo separado por segmento.</span>
+                    </div>
+                  </li>
+                  <li>
+                    <FileText aria-hidden="true" />
+                    <div>
+                      <strong>Contatos clicáveis</strong>
+                      <span>{siteConfig.contactCount} registros com contato.</span>
+                    </div>
+                  </li>
+                  <li>
+                    <FileText aria-hidden="true" />
+                    <div>
+                      <strong>Catálogos clicáveis</strong>
+                      <span>{siteConfig.catalogCount} registros com catálogo.</span>
+                    </div>
+                  </li>
+                  <li>
+                    <FileText aria-hidden="true" />
+                    <div>
+                      <strong>Sites e perfis pesquisados</strong>
+                      <span>
+                        {siteConfig.researchedChannelCount} registros com site ou
+                        Instagram pesquisado.
+                      </span>
+                    </div>
+                  </li>
+                  <li className="pdf-content-list__note">
+                    Pesquisa digital concluída em {siteConfig.researchDate}.
+                  </li>
+                </ul>
+              </Reveal>
             </div>
           </div>
         </section>
 
+        {/* ── Categorias ── */}
         <section className="pdf-categories" id="categorias">
           <div className="pdf-container">
-            <div className="pdf-section-heading">
-              <h2>
-                8 grupos para você <strong>explorar.</strong>
-              </h2>
-              <p>
-                Vá direto ao segmento mais próximo do seu público e comece a
-                comparar as opções.
-              </p>
-            </div>
+            <Reveal>
+              <div className="pdf-section-heading">
+                <h2>
+                  8 grupos para você <strong>explorar.</strong>
+                </h2>
+                <p>
+                  Vá direto ao segmento mais próximo do seu público e comece a
+                  comparar as opções.
+                </p>
+              </div>
+            </Reveal>
 
             <div className="pdf-category-list">
               {supplierCategories.map((category, index) => (
-                <div className="pdf-category-list__row" key={category.label}>
-                  <span className="pdf-category-list__index">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <strong>{category.label}</strong>
-                  <span className="pdf-category-list__bar" aria-hidden="true">
-                    <i style={{ width: `${(category.count / 40) * 100}%` }} />
-                  </span>
-                  <b>{category.count}</b>
-                </div>
+                <Reveal key={category.label} delay={index * 0.06}>
+                  <div className="pdf-category-list__row">
+                    <span className="pdf-category-list__index">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <strong>{category.label}</strong>
+                    <span className="pdf-category-list__bar" aria-hidden="true">
+                      <AnimatedBar
+                        widthPercent={(category.count / 40) * 100}
+                      />
+                    </span>
+                    <b>{category.count}</b>
+                  </div>
+                </Reveal>
               ))}
             </div>
 
-            <div className="pdf-category-total">
-              <strong>{siteConfig.supplierCount}</strong>
-              <span>registros organizados</span>
+            <Reveal delay={0.5}>
+              <div className="pdf-category-total">
+                <strong><AnimatedCounter value={siteConfig.supplierCount} /></strong>
+                <span>registros organizados</span>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* ── Mid CTA ── */}
+        <Reveal>
+          <section className="pdf-mid-cta">
+            <div className="pdf-container pdf-mid-cta__inner">
+              <FileText aria-hidden="true" />
+              <h2>Escolha um segmento. Abra os contatos. Comece sua validação.</h2>
+              <TrackedCta href={checkoutHref} location="method">
+                Quero a lista de fornecedores
+              </TrackedCta>
             </div>
-          </div>
-        </section>
+          </section>
+        </Reveal>
 
-        <section className="pdf-mid-cta">
-          <div className="pdf-container pdf-mid-cta__inner">
-            <FileText aria-hidden="true" />
-            <h2>Escolha um segmento. Abra os contatos. Comece sua validação.</h2>
-            <TrackedCta href={checkoutHref} location="method">
-              Quero a lista de fornecedores
-            </TrackedCta>
-          </div>
-        </section>
-
+        {/* ── Validação ── */}
         <section className="pdf-validation">
           <div className="pdf-container">
-            <div className="pdf-section-heading pdf-section-heading--center">
-              <h2>
-                A lista abre o caminho. <strong>A validação protege sua compra.</strong>
-              </h2>
-            </div>
+            <Reveal>
+              <div className="pdf-section-heading pdf-section-heading--center">
+                <h2>
+                  A lista abre o caminho. <strong>A validação protege sua compra.</strong>
+                </h2>
+              </div>
+            </Reveal>
 
-            <ol className="pdf-validation__steps">
-              {validationSteps.map((step) => (
-                <li key={step.number}>
-                  <span>{step.number}</span>
-                  <div>
-                    <strong>{step.title}</strong>
-                    <p>{step.text}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-
-            <p className="pdf-validation__note">
-              <AlertCircle aria-hidden="true" size={20} />
-              A internet muda. Confirme as condições diretamente antes de comprar.
-            </p>
-          </div>
-        </section>
-
-        <section className="pdf-offer" id="oferta">
-          <div className="pdf-container pdf-offer__grid">
-            <div className="pdf-offer__visual">
-              <ProductStack compact />
-            </div>
-            <div className="pdf-offer__copy">
-              <h2>Sua lista de fornecedores começa aqui.</h2>
-              <ul>
-                {offerItems.map((item) => (
-                  <li key={item}>
-                    <Check aria-hidden="true" size={18} />
-                    {item.replace(
-                      "{supplierCount}",
-                      String(siteConfig.supplierCount),
-                    )}
+            <Reveal delay={0.15}>
+              <ol className="pdf-validation__steps">
+                {validationSteps.map((step) => (
+                  <li key={step.number}>
+                    <span>{step.number}</span>
+                    <div>
+                      <strong>{step.title}</strong>
+                      <p>{step.text}</p>
+                    </div>
                   </li>
                 ))}
-              </ul>
+              </ol>
+            </Reveal>
 
-              <div className="pdf-offer__price">
-                <span>De <s>{siteConfig.offer.compareAtPrice}</s> por</span>
-                <strong>{siteConfig.offer.price}</strong>
-                {siteConfig.offer.installments ? (
-                  <small>{siteConfig.offer.installments}</small>
-                ) : null}
-                <small>{siteConfig.offer.paymentNote}</small>
-              </div>
-
-              <TrackedCta
-                className="pdf-offer__cta"
-                href={checkoutHref}
-                location="offer"
-              >
-                Quero receber o PDF
-              </TrackedCta>
-
-              <span className="pdf-offer__trust">
-                <ShieldCheck aria-hidden="true" size={18} />
-                Compra segura <i aria-hidden="true" /> {siteConfig.offer.guaranteeDays}
-                dias de garantia <i aria-hidden="true" /> Uso individual
-              </span>
-            </div>
+            <Reveal delay={0.3}>
+              <p className="pdf-validation__note">
+                <AlertCircle aria-hidden="true" size={20} />
+                A internet muda. Confirme as condições diretamente antes de comprar.
+              </p>
+            </Reveal>
           </div>
         </section>
 
+        {/* ── Oferta ── */}
+        <section className="pdf-offer" id="oferta">
+          <div className="pdf-container pdf-offer__grid">
+            <Reveal className="pdf-offer__visual">
+              <ProductStack compact />
+            </Reveal>
+            <Reveal delay={0.15}>
+              <div className="pdf-offer__copy">
+                <h2>Sua lista de fornecedores começa aqui.</h2>
+                <ul>
+                  {offerItems.map((item) => (
+                    <li key={item}>
+                      <Check aria-hidden="true" size={18} />
+                      {item.replace(
+                        "{supplierCount}",
+                        String(siteConfig.supplierCount),
+                      )}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="pdf-offer__price">
+                  <span>De <s>{siteConfig.offer.compareAtPrice}</s> por</span>
+                  <strong>{siteConfig.offer.price}</strong>
+                  {siteConfig.offer.installments ? (
+                    <small>{siteConfig.offer.installments}</small>
+                  ) : null}
+                  <small>{siteConfig.offer.paymentNote}</small>
+                </div>
+
+                <TrackedCta
+                  className="pdf-offer__cta"
+                  href={checkoutHref}
+                  location="offer"
+                >
+                  Quero receber o PDF
+                </TrackedCta>
+
+                <span className="pdf-offer__trust">
+                  <ShieldCheck aria-hidden="true" size={18} />
+                  Compra segura <i aria-hidden="true" /> {siteConfig.offer.guaranteeDays}{" "}
+                  dias de garantia <i aria-hidden="true" /> Uso individual
+                </span>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* ── FAQ ── */}
         <section className="pdf-faq" id="duvidas">
           <div className="pdf-container pdf-faq__grid">
-            <div className="pdf-faq__heading">
-              <h2>Dúvidas antes de comprar?</h2>
-              <p>Veja os pontos mais importantes antes de acessar o PDF.</p>
-            </div>
-            <Accordion items={faqItems} />
+            <Reveal>
+              <div className="pdf-faq__heading">
+                <h2>Dúvidas antes de comprar?</h2>
+                <p>Veja os pontos mais importantes antes de acessar o PDF.</p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <Accordion items={faqItems} />
+            </Reveal>
           </div>
         </section>
       </main>
