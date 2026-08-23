@@ -48,7 +48,7 @@ export const siteContent = {
 
   offer: {
     compareAtPrice: "R$ 119,89",
-    price: process.env.NEXT_PUBLIC_OFFER_PRICE?.trim() || "R$ 59,89",
+    price: process.env.NEXT_PUBLIC_OFFER_PRICE?.trim() || "R$ 29,89",
     installments: process.env.NEXT_PUBLIC_OFFER_INSTALLMENTS?.trim() ?? "",
     paymentNote:
       process.env.NEXT_PUBLIC_OFFER_PAYMENT_NOTE?.trim() ||
