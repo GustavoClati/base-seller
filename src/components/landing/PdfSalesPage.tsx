@@ -37,7 +37,7 @@ export function PdfSalesPage() {
             {navigationItems.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}
           </nav>
           <div className="seller-header__actions">
-            <Link className="seller-header__access" href="#oferta">Quero minha base <span aria-hidden="true">↗</span></Link>
+            <TrackedCta className="seller-header__access" variant="compact" href="#oferta" location="header">Quero minha base</TrackedCta>
             <MobileMenu />
           </div>
         </div>

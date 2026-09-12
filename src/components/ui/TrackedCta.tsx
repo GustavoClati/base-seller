@@ -36,7 +36,7 @@ export function TrackedCta({
       onClick={handleClick}
     >
       <span>{children}</span>
-      <ArrowUpRight aria-hidden="true" className="button__icon" size={18} />
+      <span className="button__arrow" aria-hidden="true"><ArrowUpRight className="button__icon" size={18} /></span>
     </a>
   );
 }

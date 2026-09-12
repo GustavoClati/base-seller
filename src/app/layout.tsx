@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Manrope } from "next/font/google";
+import { DM_Sans, Sora } from "next/font/google";
 import type { ReactNode } from "react";
 
 import { siteConfig } from "@/lib/site-config";
@@ -7,15 +7,15 @@ import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 import "./pdf-redesign.css";
 
-const manrope = Manrope({
+const sora = Sora({
   subsets: ["latin"],
-  variable: "--font-manrope",
+  variable: "--font-sora",
   display: "swap",
 });
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
@@ -58,7 +58,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
-      className={`${manrope.variable} ${inter.variable}`}
+      className={`${sora.variable} ${dmSans.variable}`}
       lang="pt-BR"
     >
       <body>

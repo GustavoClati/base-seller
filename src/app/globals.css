@@ -23,8 +23,8 @@
   --radius-large: clamp(1.75rem, 3vw, 2.25rem);
   --radius-medium: 1.4rem;
   --radius-button: 1rem;
-  --font-heading: var(--font-manrope), Arial, sans-serif;
-  --font-body: var(--font-inter), Arial, sans-serif;
+  --font-heading: var(--font-sora), Arial, sans-serif;
+  --font-body: var(--font-dm-sans), Arial, sans-serif;
 }
 
 /* PDF sales page */
