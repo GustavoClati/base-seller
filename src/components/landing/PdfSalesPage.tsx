@@ -2,10 +2,12 @@ import { ArrowDown, Check, LockKeyhole, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 
 import { AmbientLight } from "@/components/landing/AmbientLight";
+import { BeforeAfter } from "@/components/landing/BeforeAfter";
+import { BuyingClarity } from "@/components/landing/BuyingClarity";
+import { ReadingProgress } from "@/components/landing/ReadingProgress";
 import { CategoryExplorer } from "@/components/landing/CategoryExplorer";
 import { FormatPreview } from "@/components/landing/FormatPreview";
 import { MobileMenu } from "@/components/landing/MobileMenu";
-import { MotionToggle } from "@/components/landing/MotionToggle";
 import { ProductShowcase } from "@/components/landing/ProductShowcase";
 import { Accordion } from "@/components/ui/Accordion";
 import { BrandWordmark } from "@/components/ui/BrandWordmark";
@@ -26,13 +28,13 @@ export function PdfSalesPage() {
   return (
     <div className="seller-page">
       <header className="seller-header">
+        <ReadingProgress />
         <div className="seller-container seller-header__inner">
           <BrandWordmark className="seller-header__brand" />
           <nav aria-label="Navegação principal" className="seller-header__nav">
             {navigationItems.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}
           </nav>
           <div className="seller-header__actions">
-            <MotionToggle />
             <Link className="seller-header__access" href="#oferta">Quero minha base <span aria-hidden="true">↗</span></Link>
             <MobileMenu />
           </div>
@@ -54,9 +56,11 @@ export function PdfSalesPage() {
           </div>
           <div className="seller-container seller-hero__bottom">
             <p><strong>{siteConfig.supplierCount}</strong> registros <span aria-hidden="true">/</span> <strong>8</strong> segmentos</p>
-            <Link className="seller-scroll-cue" href="#material">Conheça por dentro <ArrowDown aria-hidden="true" size={17} /></Link>
+            <Link className="seller-scroll-cue" href="#antes-depois">Veja o que muda <ArrowDown aria-hidden="true" size={17} /></Link>
           </div>
         </section>
+
+        <BeforeAfter />
 
         <section className="seller-material" id="material">
           <div className="seller-container seller-material__grid">
@@ -96,6 +100,8 @@ export function PdfSalesPage() {
             <Reveal delay={0.1}><CategoryExplorer /></Reveal>
           </div>
         </section>
+
+        <BuyingClarity />
 
         <section className="seller-offer" id="oferta">
           <div className="seller-container seller-offer__frame">

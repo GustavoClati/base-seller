@@ -7,16 +7,13 @@ export function useHydratedReducedMotion() {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const updatePreference = () => setReduceMotion(mediaQuery.matches || document.documentElement.dataset.motion === "paused");
-    const observer = new MutationObserver(updatePreference);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-motion"] });
+    const updatePreference = () => setReduceMotion(mediaQuery.matches);
 
     updatePreference();
     mediaQuery.addEventListener("change", updatePreference);
 
     return () => {
       mediaQuery.removeEventListener("change", updatePreference);
-      observer.disconnect();
     };
   }, []);
 

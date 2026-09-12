@@ -91,7 +91,7 @@ export const siteContent = {
 
 export const navigationItems = [
   { label: "O material", href: "#material" },
-  { label: "Como consultar", href: "#como-consultar" },
+  { label: "O que muda", href: "#antes-depois" },
   { label: "Categorias", href: "#categorias" },
   { label: "Dúvidas", href: "#duvidas" },
 ] as const;
