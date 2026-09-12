@@ -21,13 +21,13 @@ export function Reveal({
   return (
     <motion.div
       className={`seller-reveal ${className}`}
-      initial={reduceMotion ? false : { opacity: 0, y: 28 }}
+      initial={reduceMotion ? false : { opacity: 0, y: 40 }}
       transition={{
-        duration: reduceMotion ? 0 : 0.75,
+        duration: reduceMotion ? 0 : 0.7,
         delay: reduceMotion ? 0 : delay,
         ease: [0.22, 1, 0.36, 1],
       }}
-      viewport={{ once: true, amount: 0.16 }}
+      viewport={{ once: false, amount: 0.12 }}
       whileInView={{ opacity: 1, y: 0 }}
     >
       {children}

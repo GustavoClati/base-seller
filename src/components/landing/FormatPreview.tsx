@@ -68,26 +68,29 @@ export function FormatPreview() {
         id="seller-format-panel"
         role="tabpanel"
       >
-        <div className="seller-format__frame" data-format={active}>
-          <div className="seller-format__toolbar">
-            <b>Base do Seller · {active === "pc" ? "PC" : "Mobile"}</b>
-            <small>{active === "pc" ? "02 / 34" : "02 / 89"}</small>
-          </div>
+        <div className="seller-format__stage">
           <AnimatePresence initial={false} mode="wait">
             <motion.div
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              className="seller-format__image"
-              exit={{ opacity: 0, scale: 0.985, y: 8 }}
-              initial={reduceMotion ? false : { opacity: 0, scale: 0.985, y: 8 }}
+              className="seller-format__frame"
+              data-format={active}
               key={active}
-              transition={{ duration: reduceMotion ? 0 : 0.28, ease: [0.22, 1, 0.36, 1] }}
+              initial={reduceMotion ? false : { opacity: 0, x: active === "pc" ? -28 : 28 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: active === "pc" ? -28 : 28 }}
+              transition={{ duration: reduceMotion ? 0 : 0.24, ease: "easeOut" }}
             >
-              <Image
-                alt={current.alt}
-                fill
-                sizes={active === "pc" ? "(max-width: 820px) 92vw, 62vw" : "(max-width: 820px) 72vw, 28vw"}
-                src={current.image}
-              />
+              <div className="seller-format__toolbar">
+                <b>Base do Seller · {active === "pc" ? "PC" : "Mobile"}</b>
+                <small>{active === "pc" ? "02 / 34" : "02 / 89"}</small>
+              </div>
+              <div className="seller-format__image">
+                <Image
+                  alt={current.alt}
+                  fill
+                  sizes={active === "pc" ? "(max-width: 820px) 92vw, 62vw" : "(max-width: 820px) 72vw, 28vw"}
+                  src={current.image}
+                />
+              </div>
             </motion.div>
           </AnimatePresence>
         </div>

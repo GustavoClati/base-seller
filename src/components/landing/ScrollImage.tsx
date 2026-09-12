@@ -11,7 +11,7 @@ export function ScrollImage({ src, alt, className = "", sizes = "(max-width: 800
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useHydratedReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["-3%", "3%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
   return (
     <div className={`seller-scroll-image ${className}`} ref={ref}>
