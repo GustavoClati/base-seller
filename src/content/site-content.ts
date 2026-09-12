@@ -26,7 +26,7 @@ export type Testimonial = {
 const siteMode: SiteMode =
   process.env.NEXT_PUBLIC_SITE_MODE === "live" ? "live" : "preview";
 
-const defaultCheckoutUrl = "https://pay.cakto.com.br/32jdpov_1058392";
+const defaultCheckoutUrl = "https://pay.cakto.com.br/3c23msf_1104401";
 
 export const siteContent = {
   brandName: "Base do Seller",
