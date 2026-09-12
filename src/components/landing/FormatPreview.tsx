@@ -44,7 +44,15 @@ export function FormatPreview() {
               id={`seller-format-tab-${key}`}
               key={key}
               onClick={() => setActive(key)}
+              onKeyDown={(event) => {
+                if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+                event.preventDefault();
+                const next = event.key === "Home" ? "pc" : event.key === "End" ? "mobile" : active === "pc" ? "mobile" : "pc";
+                setActive(next);
+                document.getElementById(`seller-format-tab-${next}`)?.focus();
+              }}
               role="tab"
+              tabIndex={selected ? 0 : -1}
               type="button"
             >
               <Icon aria-hidden="true" size={19} />
@@ -62,8 +70,7 @@ export function FormatPreview() {
       >
         <div className="seller-format__frame" data-format={active}>
           <div className="seller-format__toolbar">
-            <span />
-            <b>Base_do_Seller_2026_{active === "pc" ? "PC" : "MOBILE"}.pdf</b>
+            <b>Base do Seller · {active === "pc" ? "PC" : "Mobile"}</b>
             <small>{active === "pc" ? "02 / 34" : "02 / 89"}</small>
           </div>
           <AnimatePresence initial={false} mode="wait">

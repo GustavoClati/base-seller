@@ -10,10 +10,11 @@ import { trackEvent } from "@/lib/analytics";
 
 type AccordionProps = {
   items: FaqItem[];
+  initialOpenIndex?: number | null;
 };
 
-export function Accordion({ items }: AccordionProps) {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+export function Accordion({ items, initialOpenIndex = 0 }: AccordionProps) {
+  const [openIndex, setOpenIndex] = useState<number | null>(initialOpenIndex);
   const baseId = useId();
   const reduceMotion = useHydratedReducedMotion();
 

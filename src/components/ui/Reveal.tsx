@@ -20,10 +20,10 @@ export function Reveal({
 
   return (
     <motion.div
-      className={className}
+      className={`seller-reveal ${className}`}
       initial={reduceMotion ? false : { opacity: 0, y: 28 }}
       transition={{
-        duration: 0.7,
+        duration: reduceMotion ? 0 : 0.75,
         delay: reduceMotion ? 0 : delay,
         ease: [0.22, 1, 0.36, 1],
       }}

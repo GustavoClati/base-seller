@@ -17,6 +17,7 @@ export function MotionToggle() {
   return (
     <button
       aria-label={paused ? "Retomar animações" : "Pausar animações"}
+      aria-pressed={paused}
       className="seller-motion-toggle"
       onClick={() => setPaused((value) => !value)}
       title={paused ? "Retomar animações" : "Pausar animações"}
