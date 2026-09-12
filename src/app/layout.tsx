@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import { siteConfig } from "@/lib/site-config";
 
 import "./globals.css";
+import "./pdf-redesign.css";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -25,12 +26,12 @@ export const metadata: Metadata = {
   metadataBase: canonical ? new URL(canonical) : undefined,
   title: "Base do Seller — Lista de Fornecedores 2026 em PDF",
   description:
-    "Acesse 168 registros de fornecedores organizados em PDF, com contatos, catálogos, sites e perfis pesquisados.",
+    "Receba as versões PC e Mobile da Base do Seller, com 168 registros organizados, 127 contatos e 147 links de catálogo.",
   alternates: canonical ? { canonical } : undefined,
   openGraph: {
     title: "Base do Seller — Lista de Fornecedores 2026 em PDF",
     description:
-      "Acesse 168 registros de fornecedores organizados em PDF, com contatos, catálogos, sites e perfis pesquisados.",
+      "Receba as versões PC e Mobile da Base do Seller, com 168 registros organizados, 127 contatos e 147 links de catálogo.",
     type: "website",
     url: canonical,
     images: siteConfig.media.ogImage

@@ -34,8 +34,10 @@ export const siteContent = {
   contactCount: 127,
   catalogCount: 147,
   researchedChannelCount: 166,
-  pdfPageCount: 31,
-  researchDate: "agosto de 2026",
+  pdfPageCount: 34,
+  desktopPdfPageCount: 34,
+  mobilePdfPageCount: 89,
+  researchDate: "edição 2026",
   authorName: "Gustavo",
 
   siteMode,
@@ -88,20 +90,61 @@ export const siteContent = {
 } as const;
 
 export const navigationItems = [
-  { label: "O que vem no PDF", href: "#o-que-vem-no-pdf" },
+  { label: "O material", href: "#material" },
+  { label: "Como consultar", href: "#como-consultar" },
   { label: "Categorias", href: "#categorias" },
   { label: "Dúvidas", href: "#duvidas" },
 ] as const;
 
 export const supplierCategories = [
-  { label: "Utilidades domésticas", count: 40 },
-  { label: "Eletrônicos", count: 34 },
-  { label: "Pets", count: 24 },
-  { label: "Moda e maquiagem", count: 20 },
-  { label: "Base do Seller", count: 18 },
-  { label: "Ferramentas", count: 17 },
-  { label: "Brinquedos", count: 13 },
-  { label: "Diversos", count: 2 },
+  {
+    label: "Pets",
+    count: 24,
+    description: "Acessórios, brinquedos, higiene e utilidades para animais.",
+    pcPages: "04 a 07",
+  },
+  {
+    label: "Moda & Maquiagem",
+    count: 20,
+    description: "Moda, beleza, cosméticos e itens de cuidado pessoal.",
+    pcPages: "08 a 11",
+  },
+  {
+    label: "Utilidades Domésticas",
+    count: 42,
+    description: "Casa, cozinha, organização, limpeza e decoração.",
+    pcPages: "12 a 18",
+  },
+  {
+    label: "Ferramentas",
+    count: 17,
+    description: "Ferramentas manuais, elétricas e acessórios profissionais.",
+    pcPages: "19 a 21",
+  },
+  {
+    label: "Eletrônicos",
+    count: 42,
+    description: "Eletrônicos, informática, acessórios mobile e smartwatches.",
+    pcPages: "22 a 28",
+  },
+  {
+    label: "Brinquedos",
+    count: 16,
+    description: "Brinquedos tradicionais, educativos, infantis e geek.",
+    pcPages: "29 a 31",
+  },
+  {
+    label: "Importados & Variedades",
+    count: 5,
+    description: "Importados, presentes e fornecedores multicategoria.",
+    pcPages: "32",
+  },
+  {
+    label: "Diversos",
+    count: 2,
+    description: "Fornecedores gerais e canais fora dos demais grupos.",
+    pcPages: "33",
+  },
 ] as const;
 
 export const problemStatements = [
@@ -218,12 +261,12 @@ export const objectionBreakers = [
 ] as const;
 
 export const offerItems = [
-  "Base de Fornecedores 2026 em PDF",
+  "PDF para PC · 34 páginas",
+  "PDF Mobile · 89 páginas",
   "{supplierCount} registros organizados",
-  "8 grupos de fornecedores",
-  "Contatos, catálogos, sites e perfis pesquisados",
-  "31 páginas para consulta",
-  "Grupo VIP no WhatsApp para networking",
+  "8 segmentos para explorar",
+  "127 contatos ou WhatsApp",
+  "147 links de catálogo",
 ] as const;
 
 export type FaqItem = {
@@ -237,20 +280,20 @@ export function getFaqItems(): FaqItem[] {
   return [
     {
       question: "O que exatamente eu vou receber?",
-      answer: `Você receberá a Base de Fornecedores 2026 em PDF, com ${supplierCount} registros organizados por segmento e links de contato, catálogo, site ou Instagram quando localizados. Também terá acesso ao nosso grupo VIP no WhatsApp para networking. Não há aulas ou treinamento incluídos.`,
+      answer: `Você receberá duas edições da Base de Fornecedores 2026: um PDF de ${siteContent.desktopPdfPageCount} páginas para computador e um PDF de ${siteContent.mobilePdfPageCount} páginas para celular. Os dois trazem a mesma base, com ${supplierCount} registros organizados em oito segmentos, 127 contatos ou WhatsApp e 147 links de catálogo.`,
     },
     {
-      question: "Quando recebo o PDF?",
+      question: "Quando recebo os PDFs?",
       answer:
         offer.accessFaqAnswer ||
-        "O acesso ao PDF é enviado após a confirmação do pagamento, conforme as instruções exibidas pela Cakto no checkout.",
+        "O acesso aos dois PDFs é enviado após a confirmação do pagamento, conforme as instruções exibidas no checkout.",
     },
     {
       question: "Os fornecedores estão ativos?",
-      answer: `Os canais foram pesquisados em ${researchDate}, mas a internet e as condições comerciais mudam. Confirme CNPJ, estoque, preço, pedido mínimo, nota fiscal, prazo e dados de pagamento diretamente com cada empresa antes de comprar.`,
+      answer: `Esta ${researchDate} não inclui uma nova verificação dos fornecedores. Canais e condições comerciais mudam; confirme CNPJ, estoque, preço, pedido mínimo, nota fiscal, prazo e dados de pagamento diretamente com cada empresa antes de comprar.`,
     },
     {
-      question: "O PDF garante margem ou resultado?",
+      question: "Os PDFs garantem margem ou resultado?",
       answer:
         "Não. O arquivo é um ponto de partida para a sua pesquisa. Margem e resultado dependem do produto, custo, frete, impostos, comissões, demanda, concorrência e da sua própria validação comercial.",
     },
@@ -262,7 +305,7 @@ export function getFaqItems(): FaqItem[] {
     {
       question: "Os catálogos e contatos são clicáveis?",
       answer:
-        "O PDF reúne 127 registros com contato clicável e 147 com catálogo clicável. Quando um canal não foi localizado com segurança, isso é informado no próprio arquivo.",
+        "Sim. As duas edições reúnem 127 registros com telefone ou WhatsApp e 147 links de catálogo. Quando um canal não consta na base, a ausência é informada no próprio arquivo.",
     },
     {
       question: "É uma plataforma de dropshipping?",

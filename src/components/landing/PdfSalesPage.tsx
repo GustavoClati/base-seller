@@ -1,14 +1,24 @@
 import {
-  AlertCircle,
   Check,
   FileText,
   LockKeyhole,
-  MessageCircle,
+  Minus,
+  Monitor,
   ShieldCheck,
+  Smartphone,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { AmbientLight } from "@/components/landing/AmbientLight";
+import { FormatPreview } from "@/components/landing/FormatPreview";
+import { MobileMenu } from "@/components/landing/MobileMenu";
+import { MotionToggle } from "@/components/landing/MotionToggle";
+import { ProductShowcase } from "@/components/landing/ProductShowcase";
+import { Accordion } from "@/components/ui/Accordion";
+import { BrandWordmark } from "@/components/ui/BrandWordmark";
+import { Reveal } from "@/components/ui/Reveal";
+import { TrackedCta } from "@/components/ui/TrackedCta";
 import {
   getFaqItems,
   navigationItems,
@@ -16,396 +26,360 @@ import {
   supplierCategories,
 } from "@/content/site-content";
 import { getCheckoutHref, siteConfig } from "@/lib/site-config";
-import { Accordion } from "@/components/ui/Accordion";
-import { AnimatedBar } from "@/components/ui/AnimatedBar";
-import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
-import { BrandWordmark } from "@/components/ui/BrandWordmark";
-import { Reveal } from "@/components/ui/Reveal";
-import { TrackedCta } from "@/components/ui/TrackedCta";
 
 const proofStats = [
   { value: siteConfig.supplierCount, label: "registros" },
-  { value: siteConfig.contactCount, label: "com contato" },
-  { value: siteConfig.catalogCount, label: "com catálogo" },
-  {
-    value: siteConfig.researchedChannelCount,
-    label: "com site ou Instagram",
-  },
+  { value: 8, label: "segmentos" },
+  { value: siteConfig.contactCount, label: "contatos" },
+  { value: siteConfig.catalogCount, label: "catálogos" },
 ] as const;
 
-const validationSteps = [
+const consultationSteps = [
   {
     number: "01",
-    title: "Confirme a empresa",
-    text: "Valide CNPJ, razão social, nota fiscal e dados bancários.",
+    title: "Escolha uma categoria",
+    text: "Comece por um segmento simples de comparar.",
   },
   {
     number: "02",
-    title: "Compare o custo total",
-    text: "Some produto, imposto, frete, embalagem e comissão.",
+    title: "Abra os canais",
+    text: "Use os links de contato, perfil, site e catálogo.",
   },
   {
     number: "03",
-    title: "Teste antes de escalar",
-    text: "Faça um pedido pequeno e confirme prazo, qualidade e suporte.",
+    title: "Analise o produto",
+    text: "Confira margem, concorrência, frete, demanda e pedido mínimo.",
   },
   {
     number: "04",
-    title: "Pague no canal certo",
-    text: "Confirme o destinatário pelo site, Instagram ou contato comercial.",
+    title: "Faça um teste pequeno",
+    text: "Valide fornecedor e produto antes de comprar em volume.",
   },
 ] as const;
 
-function ProductStack({ compact = false }: { compact?: boolean }) {
-  return (
-    <div className={`pdf-product-stack${compact ? " is-compact" : ""}`}>
-      <div className="pdf-product-stack__sample" aria-hidden="true">
-        <Image
-          alt=""
-          height={910}
-          loading={compact ? "lazy" : "eager"}
-          src="/images/pdf-sample-table.webp"
-          width={1287}
-        />
-      </div>
-      <div className="pdf-product-stack__index" aria-hidden="true">
-        <Image
-          alt=""
-          height={910}
-          loading={compact ? "lazy" : "eager"}
-          src="/images/pdf-categories.webp"
-          width={1287}
-        />
-      </div>
-      <div className="pdf-product-stack__cover">
-        <Image
-          alt="Capa da Base de Fornecedores 2026 da Base do Seller"
-          height={910}
-          loading={compact ? "lazy" : "eager"}
-          src="/images/pdf-cover.webp"
-          width={1287}
-        />
-      </div>
-    </div>
-  );
-}
+const productFacts = [
+  { value: siteConfig.supplierCount, label: "registros organizados" },
+  { value: 8, label: "segmentos" },
+  { value: siteConfig.contactCount, label: "contatos ou WhatsApp" },
+  { value: siteConfig.catalogCount, label: "links de catálogo" },
+] as const;
 
 export function PdfSalesPage() {
   const checkoutHref = getCheckoutHref();
   const faqItems = getFaqItems();
 
   return (
-    <div className="pdf-sales-page">
-      <header className="pdf-header">
-        <div className="pdf-container pdf-header__inner">
-          <BrandWordmark className="pdf-header__brand" />
-          <nav aria-label="Navegação principal" className="pdf-header__nav">
+    <div className="seller-page">
+      <header className="seller-header">
+        <div className="seller-container seller-header__inner">
+          <BrandWordmark className="seller-header__brand" />
+          <nav aria-label="Navegação principal" className="seller-header__nav">
             {navigationItems.map((item) => (
               <Link href={item.href} key={item.href}>
                 {item.label}
               </Link>
             ))}
           </nav>
-          <TrackedCta
-            className="pdf-header__cta"
-            href={checkoutHref}
-            location="header"
-            variant="compact"
-          >
-            Quero a lista
-          </TrackedCta>
+          <div className="seller-header__actions">
+            <MotionToggle />
+            <TrackedCta
+              className="seller-header__cta"
+              href={checkoutHref}
+              location="header"
+              variant="compact"
+            >
+              Quero receber os PDFs
+            </TrackedCta>
+            <MobileMenu />
+          </div>
         </div>
       </header>
 
       <main id="conteudo-principal">
-        {/* ── Hero — CSS keyframe stagger (above the fold, no Reveal needed) ── */}
-        <section className="pdf-hero" id="hero">
-          <div className="pdf-container pdf-hero__grid">
-            <div className="pdf-hero__copy">
+        <section className="seller-hero" id="hero">
+          <AmbientLight className="seller-hero__ambient" />
+          <div className="seller-container seller-hero__grid">
+            <div className="seller-hero__copy">
               <h1>
-                Pare de procurar <strong>fornecedores no escuro.</strong>
+                Encontre fornecedores. <strong>Comece com uma base.</strong>
               </h1>
               <p>
-                Receba uma lista organizada com contatos, catálogos, sites e
-                perfis pesquisados para você começar sua validação.
+                Receba duas versões do mesmo conteúdo em PDF — uma para
+                computador e outra para celular — com contatos e catálogos
+                clicáveis organizados por categoria.
               </p>
               <TrackedCta
-                className="pdf-hero__cta"
+                className="seller-hero__cta"
                 href={checkoutHref}
                 location="hero"
               >
-                Quero acessar o PDF
+                Quero receber os PDFs
               </TrackedCta>
-              <span className="pdf-trust-line">
+              <span className="seller-trust-line">
                 <LockKeyhole aria-hidden="true" size={17} />
-                Compra segura <i aria-hidden="true" /> Acesso ao PDF após a
-                confirmação
+                Compra segura <i aria-hidden="true" /> Acesso após a confirmação
               </span>
             </div>
 
-            <div className="pdf-hero__visual">
-              <ProductStack />
+            <div className="seller-hero__visual">
+              <ProductShowcase />
             </div>
           </div>
 
-          <div className="pdf-container pdf-proof-rail" aria-label="Números da base">
+          <div className="seller-container seller-proof-rail" aria-label="Resumo do material">
             {proofStats.map((stat) => (
-              <div className="pdf-proof-rail__item" key={stat.label}>
-                <strong><AnimatedCounter value={stat.value} /></strong>
+              <div className="seller-proof-rail__item" key={stat.label}>
+                <strong>{stat.value}</strong>
                 <span>{stat.label}</span>
               </div>
             ))}
           </div>
         </section>
 
-        {/* ── O que vem no PDF ── */}
-        <section className="pdf-content-section" id="o-que-vem-no-pdf">
-          <div className="pdf-container">
-            <Reveal>
-              <div className="pdf-section-heading">
-                <h2>
-                  Uma base pronta para abrir <strong>caminhos.</strong>
-                </h2>
-                <p>
-                  Em vez de começar com dezenas de abas abertas, você recebe os
-                  registros organizados em um único PDF.
-                </p>
-              </div>
+        <section className="seller-material" id="material">
+          <div className="seller-container">
+            <Reveal className="seller-heading seller-heading--material">
+              <span className="seller-section-index">01 · O material</span>
+              <h2>
+                O mesmo conteúdo. <strong>Duas formas de consultar.</strong>
+              </h2>
+              <p>
+                No computador, compare com mais espaço. No celular, abra
+                contatos e catálogos onde estiver.
+              </p>
             </Reveal>
 
-            <div className="pdf-content-section__grid">
-              <Reveal delay={0.1}>
-                <div className="pdf-viewer">
-                  <div className="pdf-viewer__bar">
-                    <span />
-                    <span>Base do Seller - Lista de Fornecedores.pdf</span>
-                    <b>{siteConfig.pdfPageCount} páginas</b>
-                  </div>
-                  <Image
-                    alt="Amostra de uma página do PDF com fornecedores, contatos, sites, Instagram e catálogos"
-                    height={910}
-                    src="/images/pdf-sample-table.webp"
-                    width={1287}
-                  />
-                </div>
+            <div className="seller-material__grid">
+              <Reveal className="seller-material__preview" delay={0.08}>
+                <FormatPreview />
               </Reveal>
-
-              <Reveal delay={0.25}>
-                <ul className="pdf-content-list">
-                  <li>
-                    <FileText aria-hidden="true" />
-                    <div>
-                      <strong>{siteConfig.pdfPageCount} páginas organizadas</strong>
-                      <span>Conteúdo separado por segmento.</span>
-                    </div>
-                  </li>
-                  <li>
-                    <FileText aria-hidden="true" />
-                    <div>
-                      <strong>Contatos clicáveis</strong>
-                      <span>{siteConfig.contactCount} registros com contato.</span>
-                    </div>
-                  </li>
-                  <li>
-                    <FileText aria-hidden="true" />
-                    <div>
-                      <strong>Catálogos clicáveis</strong>
-                      <span>{siteConfig.catalogCount} registros com catálogo.</span>
-                    </div>
-                  </li>
-                  <li>
-                    <FileText aria-hidden="true" />
-                    <div>
-                      <strong>Sites e perfis pesquisados</strong>
-                      <span>
-                        {siteConfig.researchedChannelCount} registros com site ou
-                        Instagram pesquisado.
-                      </span>
-                    </div>
-                  </li>
-                  <li>
-                    <MessageCircle aria-hidden="true" />
-                    <div>
-                      <strong>Grupo VIP no WhatsApp</strong>
-                      <span>Faça networking com outros sellers.</span>
-                    </div>
-                  </li>
-                  <li className="pdf-content-list__note">
-                    Pesquisa digital concluída em {siteConfig.researchDate}.
-                  </li>
-                </ul>
+              <Reveal className="seller-fact-list" delay={0.18}>
+                {productFacts.map((fact) => (
+                  <div className="seller-fact-list__item" key={fact.label}>
+                    <strong>{fact.value}</strong>
+                    <span>{fact.label}</span>
+                  </div>
+                ))}
+                <p>
+                  <FileText aria-hidden="true" size={18} />
+                  Links ausentes são informados no próprio arquivo.
+                </p>
               </Reveal>
             </div>
           </div>
         </section>
 
-        {/* ── Categorias ── */}
-        <section className="pdf-categories" id="categorias">
-          <div className="pdf-container">
-            <Reveal>
-              <div className="pdf-section-heading">
-                <h2>
-                  8 grupos para você <strong>explorar.</strong>
-                </h2>
-                <p>
-                  Vá direto ao segmento mais próximo do seu público e comece a
-                  comparar as opções.
-                </p>
-              </div>
+        <section className="seller-consult" id="como-consultar">
+          <div className="seller-container">
+            <Reveal className="seller-heading seller-heading--wide">
+              <span className="seller-section-index">02 · Como consultar</span>
+              <h2>Abra. Compare. Valide antes de comprar.</h2>
+              <p>A base encurta a busca. A decisão continua sendo sua.</p>
             </Reveal>
 
-            <div className="pdf-category-list">
-              {supplierCategories.map((category, index) => (
-                <Reveal key={category.label} delay={index * 0.06}>
-                  <div className="pdf-category-list__row">
-                    <span className="pdf-category-list__index">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <strong>{category.label}</strong>
-                    <span className="pdf-category-list__bar" aria-hidden="true">
-                      <AnimatedBar
-                        widthPercent={(category.count / 40) * 100}
-                      />
-                    </span>
-                    <b>{category.count}</b>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-
-            <Reveal delay={0.5}>
-              <div className="pdf-category-total">
-                <strong><AnimatedCounter value={siteConfig.supplierCount} /></strong>
-                <span>registros organizados</span>
-              </div>
-            </Reveal>
-          </div>
-        </section>
-
-        {/* ── Mid CTA ── */}
-        <Reveal>
-          <section className="pdf-mid-cta">
-            <div className="pdf-container pdf-mid-cta__inner">
-              <FileText aria-hidden="true" />
-              <h2>Escolha um segmento. Abra os contatos. Comece sua validação.</h2>
-              <TrackedCta href={checkoutHref} location="method">
-                Quero a lista de fornecedores
-              </TrackedCta>
-            </div>
-          </section>
-        </Reveal>
-
-        {/* ── Validação ── */}
-        <section className="pdf-validation">
-          <div className="pdf-container">
-            <Reveal>
-              <div className="pdf-section-heading pdf-section-heading--center">
-                <h2>
-                  A lista abre o caminho. <strong>A validação protege sua compra.</strong>
-                </h2>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.15}>
-              <ol className="pdf-validation__steps">
-                {validationSteps.map((step) => (
-                  <li key={step.number}>
-                    <span>{step.number}</span>
+            <ol className="seller-process">
+              {consultationSteps.map((step, index) => (
+                <Reveal delay={index * 0.07} key={step.number}>
+                  <li>
+                    <span className="seller-process__number">{step.number}</span>
                     <div>
                       <strong>{step.title}</strong>
                       <p>{step.text}</p>
                     </div>
                   </li>
-                ))}
-              </ol>
+                </Reveal>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section className="seller-categories" id="categorias">
+          <div className="seller-container">
+            <Reveal className="seller-heading seller-categories__heading">
+              <span className="seller-section-index">03 · Categorias</span>
+              <h2>8 segmentos para explorar.</h2>
+              <p>Contatos, catálogos e canais organizados por categoria.</p>
             </Reveal>
 
-            <Reveal delay={0.3}>
-              <p className="pdf-validation__note">
-                <AlertCircle aria-hidden="true" size={20} />
-                A internet muda. Confirme as condições diretamente antes de comprar.
+            <div className="seller-category-directory">
+              {supplierCategories.map((category, index) => (
+                <Reveal delay={(index % 4) * 0.055} key={category.label}>
+                  <div className="seller-category-row">
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <div>
+                      <strong>{category.label}</strong>
+                      <p>{category.description}</p>
+                    </div>
+                    <i aria-hidden="true">
+                      <b style={{ width: `${Math.max(10, (category.count / 42) * 100)}%` }} />
+                    </i>
+                    <em>{category.count}</em>
+                    <small>págs. {category.pcPages}</small>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="seller-audience">
+          <AmbientLight className="seller-audience__ambient" />
+          <div className="seller-container">
+            <Reveal className="seller-heading seller-heading--audience">
+              <span className="seller-section-index">04 · Para quem é</span>
+              <h2>
+                Para quem quer começar com pesquisa, <strong>não com promessa.</strong>
+              </h2>
+              <h3>Contato encontrado ainda não é oportunidade.</h3>
+              <p>
+                A Base do Seller faz sentido para quem quer reduzir o tempo de
+                busca e ainda comparar, confirmar e testar antes de comprar.
               </p>
             </Reveal>
-          </div>
-        </section>
 
-        {/* ── Oferta ── */}
-        <section className="pdf-offer" id="oferta">
-          <div className="pdf-container pdf-offer__grid">
-            <Reveal className="pdf-offer__visual">
-              <ProductStack compact />
-            </Reveal>
-            <Reveal delay={0.15}>
-              <div className="pdf-offer__copy">
-                <h2>Sua lista de fornecedores começa aqui.</h2>
-                <ul>
-                  {offerItems.map((item) => (
-                    <li key={item}>
-                      <Check aria-hidden="true" size={18} />
-                      {item.replace(
-                        "{supplierCount}",
-                        String(siteConfig.supplierCount),
-                      )}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="pdf-offer__price">
-                  <span>De <s>{siteConfig.offer.compareAtPrice}</s> por</span>
-                  <strong>{siteConfig.offer.price}</strong>
-                  {siteConfig.offer.installments ? (
-                    <small>{siteConfig.offer.installments}</small>
-                  ) : null}
-                  <small>{siteConfig.offer.paymentNote}</small>
+            <div className="seller-audience__grid">
+              <Reveal className="seller-audience__lists" delay={0.08}>
+                <div>
+                  <h3>Faz sentido para quem:</h3>
+                  <ul>
+                    {[
+                      "Vende ou quer vender em marketplaces",
+                      "Procura fornecedores nacionais",
+                      "Quer trabalhar com estoque próprio",
+                      "Está disposto a comparar condições e testar pequeno",
+                    ].map((item) => (
+                      <li key={item}>
+                        <Check aria-hidden="true" size={18} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
+                <div>
+                  <h3>Não é um atalho.</h3>
+                  <ul>
+                    {[
+                      "Não garante lucro ou vendas",
+                      "Não entrega anúncios prontos",
+                      "Não automatiza dropshipping",
+                      "Não substitui sua análise comercial",
+                    ].map((item) => (
+                      <li key={item}>
+                        <Minus aria-hidden="true" size={18} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
 
-                <TrackedCta
-                  className="pdf-offer__cta"
-                  href={checkoutHref}
-                  location="offer"
-                >
-                  Quero receber o PDF
-                </TrackedCta>
+              <Reveal className="seller-audience__proof" delay={0.16}>
+                <div className="seller-audience__page">
+                  <Image
+                    alt="Página real do PDF para computador com os cuidados antes de comprar"
+                    fill
+                    sizes="(max-width: 820px) 86vw, 34vw"
+                    src="/images/pdf-2026/pc-caution.webp"
+                  />
+                </div>
+              </Reveal>
+            </div>
 
-                <span className="pdf-offer__trust">
-                  <ShieldCheck aria-hidden="true" size={18} />
-                  Compra segura <i aria-hidden="true" /> {siteConfig.offer.guaranteeDays}{" "}
-                  dias de garantia <i aria-hidden="true" /> Uso individual
-                </span>
-              </div>
+            <Reveal className="seller-audience__closing" delay={0.18}>
+              A base abre o caminho. <strong>O método melhora a decisão.</strong>
             </Reveal>
           </div>
         </section>
 
-        {/* ── FAQ ── */}
-        <section className="pdf-faq" id="duvidas">
-          <div className="pdf-container pdf-faq__grid">
-            <Reveal>
-              <div className="pdf-faq__heading">
-                <h2>Dúvidas antes de comprar?</h2>
-                <p>Veja os pontos mais importantes antes de acessar o PDF.</p>
+        <section className="seller-offer" id="oferta">
+          <AmbientLight className="seller-offer__ambient" />
+          <div className="seller-container seller-offer__frame">
+            <Reveal className="seller-offer__visual">
+              <div className="seller-offer__pc">
+                <Image
+                  alt="Capa real da versão PC da Base do Seller"
+                  fill
+                  sizes="(max-width: 820px) 76vw, 41vw"
+                  src="/images/pdf-2026/pc-cover.webp"
+                />
+              </div>
+              <div className="seller-offer__mobile">
+                <Image
+                  alt="Capa real da versão Mobile da Base do Seller"
+                  fill
+                  sizes="(max-width: 820px) 28vw, 13vw"
+                  src="/images/pdf-2026/mobile-cover.webp"
+                />
               </div>
             </Reveal>
-            <Reveal delay={0.15}>
+
+            <Reveal className="seller-offer__copy" delay={0.12}>
+              <span className="seller-section-index">05 · O acesso</span>
+              <h2>Sua base para começar a pesquisar.</h2>
+              <p>Receba as duas edições completas no mesmo acesso.</p>
+              <ul>
+                {offerItems.map((item, index) => (
+                  <li key={item}>
+                    {index === 0 ? (
+                      <Monitor aria-hidden="true" size={19} />
+                    ) : index === 1 ? (
+                      <Smartphone aria-hidden="true" size={19} />
+                    ) : (
+                      <Check aria-hidden="true" size={19} />
+                    )}
+                    {item.replace("{supplierCount}", String(siteConfig.supplierCount))}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="seller-offer__price">
+                <span>De <s>{siteConfig.offer.compareAtPrice}</s> por</span>
+                <strong>{siteConfig.offer.price}</strong>
+                {siteConfig.offer.installments ? <small>{siteConfig.offer.installments}</small> : null}
+                <small>{siteConfig.offer.paymentNote}</small>
+              </div>
+
+              <TrackedCta
+                className="seller-offer__cta"
+                href={checkoutHref}
+                location="offer"
+              >
+                Quero receber os PDFs
+              </TrackedCta>
+              <span className="seller-trust-line seller-offer__trust">
+                <ShieldCheck aria-hidden="true" size={18} />
+                Compra segura <i aria-hidden="true" /> {siteConfig.offer.guaranteeDays} dias de garantia
+                <i aria-hidden="true" /> Uso individual
+              </span>
+            </Reveal>
+          </div>
+        </section>
+
+        <section className="seller-faq" id="duvidas">
+          <div className="seller-container seller-faq__grid">
+            <Reveal className="seller-faq__heading">
+              <span className="seller-section-index">06 · Dúvidas</span>
+              <h2>Dúvidas antes de comprar?</h2>
+              <p>Respostas objetivas para você comprar com tranquilidade.</p>
+              <i aria-hidden="true" />
+            </Reveal>
+            <Reveal className="seller-faq__accordion" delay={0.1}>
               <Accordion items={faqItems} />
             </Reveal>
           </div>
         </section>
       </main>
 
-      <footer className="pdf-footer">
-        <div className="pdf-container pdf-footer__inner">
+      <footer className="seller-footer" id="site-footer">
+        <div className="seller-container seller-footer__inner">
           <div>
             <BrandWordmark />
-            <p>Lista digital de fornecedores para uso individual.</p>
+            <p>Produto digital independente, sem vínculo com o Mercado Livre.</p>
           </div>
           <nav aria-label="Links legais">
             <Link href="/termos">Termos de uso</Link>
             <Link href="/privacidade">Política de privacidade</Link>
             <Link href="/reembolso">Política de reembolso</Link>
-            {siteConfig.supportEmail ? (
-              <a href={`mailto:${siteConfig.supportEmail}`}>Suporte</a>
-            ) : null}
           </nav>
           <p>© {new Date().getFullYear()} Base do Seller.</p>
         </div>

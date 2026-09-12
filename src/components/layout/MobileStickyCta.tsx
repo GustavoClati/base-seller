@@ -1,21 +1,26 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 
 import { getCheckoutHref } from "@/lib/site-config";
 import { TrackedCta } from "@/components/ui/TrackedCta";
+import { useHydratedReducedMotion } from "@/hooks/useHydratedReducedMotion";
 
 export function MobileStickyCta() {
   const [heroVisible, setHeroVisible] = useState(true);
   const [offerVisible, setOfferVisible] = useState(false);
-  const reduceMotion = useReducedMotion();
+  const [faqVisible, setFaqVisible] = useState(false);
+  const [footerVisible, setFooterVisible] = useState(false);
+  const reduceMotion = useHydratedReducedMotion();
 
   useEffect(() => {
     const hero = document.getElementById("hero");
     const offer = document.getElementById("oferta");
+    const faq = document.getElementById("duvidas");
+    const footer = document.getElementById("site-footer");
 
-    if (!hero || !offer) return;
+    if (!hero || !offer || !faq || !footer) return;
 
     const heroObserver = new IntersectionObserver(
       ([entry]) => setHeroVisible(entry.isIntersecting),
@@ -27,16 +32,30 @@ export function MobileStickyCta() {
       { threshold: 0.15 },
     );
 
+    const faqObserver = new IntersectionObserver(
+      ([entry]) => setFaqVisible(entry.isIntersecting),
+      { threshold: 0.04 },
+    );
+
+    const footerObserver = new IntersectionObserver(
+      ([entry]) => setFooterVisible(entry.isIntersecting),
+      { threshold: 0.04 },
+    );
+
     heroObserver.observe(hero);
     offerObserver.observe(offer);
+    faqObserver.observe(faq);
+    footerObserver.observe(footer);
 
     return () => {
       heroObserver.disconnect();
       offerObserver.disconnect();
+      faqObserver.disconnect();
+      footerObserver.disconnect();
     };
   }, []);
 
-  const visible = !heroVisible && !offerVisible;
+  const visible = !heroVisible && !offerVisible && !faqVisible && !footerVisible;
 
   return (
     <AnimatePresence>
@@ -54,7 +73,7 @@ export function MobileStickyCta() {
             location="mobile_sticky"
             variant="primary"
           >
-            Quero receber o PDF
+            Quero receber os PDFs
           </TrackedCta>
         </motion.div>
       ) : null}

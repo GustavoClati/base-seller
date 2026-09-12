@@ -1,10 +1,11 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { ChevronDown } from "lucide-react";
 import { useId, useState } from "react";
 
 import type { FaqItem } from "@/content/site-content";
+import { useHydratedReducedMotion } from "@/hooks/useHydratedReducedMotion";
 import { trackEvent } from "@/lib/analytics";
 
 type AccordionProps = {
@@ -14,7 +15,7 @@ type AccordionProps = {
 export function Accordion({ items }: AccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const baseId = useId();
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = useHydratedReducedMotion();
 
   function toggle(index: number) {
     const nextIndex = openIndex === index ? null : index;
